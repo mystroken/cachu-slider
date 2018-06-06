@@ -23,7 +23,7 @@ yarn add cachu-slider
 ```
 
 ### Including files:
-```
+```html
 <link rel="stylesheet" type="text/css" href="cachu-slider.css" />
 
 <script type="text/javascript" src="cachu-slider.js"></script>
@@ -35,16 +35,14 @@ Each section will be defined with an element containing the section class. The a
 Sections should be placed inside a wrapper. The wrapper can not be the body element and it must have the class ```.cachu__container```.
 ```html
 <div class="cachu__container">
-	<section class="cachu__section">
-		Some section
-	</section>
-	<section class="cachu__section">
-		Some section
-	</section>
-	<section class="cachu__section">
-		Some section
-	</section>
+  <section class="cachu__section">Some section</section>
+  <section class="cachu__section">Some section</section>
+  <section class="cachu__section">Some section</section>
 </div>
 ```
 
 ### Initialization
+```javascript
+let slider = new Cachu(this.elements.container, cachuSliderOptions);
+slider.run();
+```
