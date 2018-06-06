@@ -1,0 +1,80 @@
+
+.cachu__container {
+	visibility: hidden;
+	height: 100%;
+	width: 100%;
+}
+
+.cachu__section {
+	position: relative;
+	height: 100vh;
+	width: 100%;
+}
+
+.cachu__nav {
+	position: fixed;
+	top: 50%;
+	transform: translate3d(0,-50%,0);
+	z-index: 50;
+	right: 17px;
+
+	ul,
+	li {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+
+		display: flex;
+		flex-direction: column;
+		align-content: center;
+		justify-content: center;
+	}
+
+	ul {
+
+		li {
+
+			a {
+				display: block;
+				position: relative;
+				width: .35rem;
+				height: .35rem;
+				margin: .6rem auto;
+				cursor: pointer;
+				text-decoration: none;
+				transition: all .25s ease-in-out;
+
+				&.active {
+					width: .8rem;
+					height: .8rem;
+				}
+
+				span {
+					display: block;
+					border-radius: 50%;
+					width: 100%;
+					height: 100%;
+					border: 0;
+					background: #FFFFFF;
+				}
+			}
+
+			.cachu__nav__tooltip {
+				position: absolute;
+				top: -2px;
+				right: 20px;
+				color: #fff;
+				font-size: 14px;
+				font-family: inherit;
+				white-space: nowrap;
+				max-width: 220px;
+				overflow: hidden;
+				display: block;
+				opacity: 0;
+				width: 0;
+				cursor: pointer;
+			}
+		}
+
+	}
+}

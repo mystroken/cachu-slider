@@ -1,0 +1,162 @@
+Arguments: 
+  /Users/ken/.nvm/versions/node/v6.13.0/bin/node /Users/ken/.nvm/versions/node/v6.13.0/bin/yarn
+
+PATH: 
+  /Users/ken/.nvm/versions/node/v6.13.0/bin:/usr/local/sbin:/usr/local/Cellar/gradle/4.6/bin/:/Users/ken/Library/Android/sdk/platform-tools:/Users/ken/Library/Android/sdk/tools:/Users/ken/Library/Python/3.6/bin:/usr/local/Cellar/python/3.6.4_3/bin:/Users/ken/.composer/vendor/bin:/usr/local/php5/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/usr/local/sbin:/Users/ken/.sdkman/candidates/java/current/bin:/usr/local/Cellar/gradle/4.6/bin/:/Users/ken/Library/Android/sdk/platform-tools:/Users/ken/Library/Android/sdk/tools:/Users/ken/Library/Python/3.6/bin:/usr/local/Cellar/python/3.6.4_3/bin:/Users/ken/.composer/vendor/bin:/usr/local/php5/bin
+
+Yarn version: 
+  1.5.1
+
+Node version: 
+  6.13.0
+
+Platform: 
+  darwin x64
+
+npm manifest: 
+  {
+    "name": "cachu-slider",
+    "version": "1.0.0",
+    "description": "Create beautiful scrolling websites",
+    "main": "cachu-slider.js",
+    "scripts": {
+      "build": "webpack ---mode production --watch"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git@github.com:mystroken/cachu-slider.git"
+    },
+    "authors": [
+      "Mystro Ken https://github.com/mystroken"
+    ],
+    "license": "MIT",
+    "bugs": {
+      "url": "https://github.com/mystroken/cachu-slider/issues"
+    },
+    "homepage": "https://github.com/mystroken/cachu-slider",
+    "keywords": [
+      "javacript",
+      "scrolling",
+      "single_page",
+      "onepage",
+      "fullpage",
+      "one_page",
+      "sliding",
+      "snap",
+      "scroll"
+    ],
+    "files": [
+      "src",
+      "package.json",
+      "README.md"
+    ],
+    "dependencies": {
+      "hamsterjs": "^1.1.3",
+      "lodash.debounce": "^4.0.8"
+    },
+    "devDependencies": {
+      "autoprefixer": "^8.5.0",
+      "babel-cli": "6.26.0",
+      "babel-core": "^6.26.3",
+      "babel-loader": "^7.1.4",
+      "babel-plugin-transform-async-to-generator": "^6.24.1",
+      "babel-plugin-transform-runtime": "^6.23.0",
+      "babel-polyfill": "^6.26.0",
+      "babel-preset-env": "^1.7.0",
+      "babel-preset-stage-0": "^6.24.1",
+      "babel-runtime": "^6.26.0",
+      "css-loader": "^0.28.11",
+      "extract-text-webpack-plugin": "^4.0.0-beta.0",
+      "file-loader": "^1.1.11",
+      "img-loader": "^3.0.0",
+      "node-sass": "^4.9.0",
+      "postcss": "^6.0.22",
+      "postcss-loader": "^2.1.5",
+      "postcss-scss": "^1.0.5",
+      "sass-loader": "^7.0.1",
+      "style-loader": "^0.21.0",
+      "url-loader": "^1.0.1",
+      "webpack": "4.8.3",
+      "webpack-cli": "^2.1.3"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
+
+Trace: 
+  Error: /www/btt.local/wordpress/wp-content/themes/btt/node_modules/cachu-slider/node_modules/node-sass: Command failed.
+  Exit code: 1
+  Command: sh
+  Arguments: -c node scripts/build.js
+  Directory: /www/btt.local/wordpress/wp-content/themes/btt/node_modules/cachu-slider/node_modules/node-sass
+  Output:
+  Building: /Users/ken/.nvm/versions/node/v6.13.0/bin/node /www/btt.local/wordpress/wp-content/themes/btt/node_modules/cachu-slider/node_modules/node-gyp/bin/node-gyp.js rebuild --verbose --libsass_ext= --libsass_cflags= --libsass_ldflags= --libsass_library=
+  gyp info it worked if it ends with ok
+  gyp verb cli [ '/Users/ken/.nvm/versions/node/v6.13.0/bin/node',
+  gyp verb cli   '/www/btt.local/wordpress/wp-content/themes/btt/node_modules/cachu-slider/node_modules/node-gyp/bin/node-gyp.js',
+  gyp verb cli   'rebuild',
+  gyp verb cli   '--verbose',
+  gyp verb cli   '--libsass_ext=',
+  gyp verb cli   '--libsass_cflags=',
+  gyp verb cli   '--libsass_ldflags=',
+  gyp verb cli   '--libsass_library=' ]
+  gyp info using node-gyp@3.6.2
+  gyp info using node@6.13.0 | darwin | x64
+  gyp verb command rebuild []
+  gyp verb command clean []
+  gyp verb clean removing "build" directory
+  gyp verb command configure []
+  gyp verb check python checking for Python executable "python2" in the PATH
+  gyp verb `which` failed Error: not found: python2
+  gyp verb `which` failed     at getNotFoundError (/www/btt.local/wordpress/wp-content/themes/btt/node_modules/cachu-slider/node_modules/which/which.js:13:12)
+  gyp verb `which` failed     at F (/www/btt.local/wordpress/wp-content/themes/btt/node_modules/cachu-slider/node_modules/which/which.js:68:19)
+  gyp verb `which` failed     at E (/www/btt.local/wordpress/wp-content/themes/btt/node_modules/cachu-slider/node_modules/which/which.js:80:29)
+  gyp verb `which` failed     at /www/btt.local/wordpress/wp-content/themes/btt/node_modules/cachu-slider/node_modules/which/which.js:89:16
+  gyp verb `which` failed     at /www/btt.local/wordpress/wp-content/themes/btt/node_modules/cachu-slider/node_modules/isexe/index.js:42:5
+  gyp verb `which` failed     at /www/btt.local/wordpress/wp-content/themes/btt/node_modules/cachu-slider/node_modules/isexe/mode.js:8:5
+  gyp verb `which` failed     at FSReqWrap.oncomplete (fs.js:123:15)
+  gyp verb `which` failed  python2 { Error: not found: python2
+  gyp verb `which` failed     at getNotFoundError (/www/btt.local/wordpress/wp-content/themes/btt/node_modules/cachu-slider/node_modules/which/which.js:13:12)
+  gyp verb `which` failed     at F (/www/btt.local/wordpress/wp-content/themes/btt/node_modules/cachu-slider/node_modules/which/which.js:68:19)
+  gyp verb `which` failed     at E (/www/btt.local/wordpress/wp-content/themes/btt/node_modules/cachu-slider/node_modules/which/which.js:80:29)
+  gyp verb `which` failed     at /www/btt.local/wordpress/wp-content/themes/btt/node_modules/cachu-slider/node_modules/which/which.js:89:16
+  gyp verb `which` failed     at /www/btt.local/wordpress/wp-content/themes/btt/node_modules/cachu-slider/node_modules/isexe/index.js:42:5
+  gyp verb `which` failed     at /www/btt.local/wordpress/wp-content/themes/btt/node_modules/cachu-slider/node_modules/isexe/mode.js:8:5
+  gyp verb `which` failed     at FSReqWrap.oncomplete (fs.js:123:15)
+  gyp verb `which` failed   stack: 'Error: not found: python2\n    at getNotFoundError (/www/btt.local/wordpress/wp-content/themes/btt/node_modules/cachu-slider/node_modules/which/which.js:13:12)\n    at F (/www/btt.local/wordpress/wp-content/themes/btt/node_modules/cachu-slider/node_modules/which/which.js:68:19)\n    at E (/www/btt.local/wordpress/wp-content/themes/btt/node_modules/cachu-slider/node_modules/which/which.js:80:29)\n    at /www/btt.local/wordpress/wp-content/themes/btt/node_modules/cachu-slider/node_modules/which/which.js:89:16\n    at /www/btt.local/wordpress/wp-content/themes/btt/node_modules/cachu-slider/node_modules/isexe/index.js:42:5\n    at /www/btt.local/wordpress/wp-content/themes/btt/node_modules/cachu-slider/node_modules/isexe/mode.js:8:5\n    at FSReqWrap.oncomplete (fs.js:123:15)',
+  gyp verb `which` failed   code: 'ENOENT' }
+  gyp verb check python checking for Python executable "python" in the PATH
+  gyp verb `which` succeeded python /usr/local/Cellar/python/3.6.4_3/bin/python
+  gyp verb check python version `/usr/local/Cellar/python/3.6.4_3/bin/python -c "import platform; print(platform.python_version());"` returned: "3.6.4\n"
+  gyp ERR! configure error 
+  gyp ERR! stack Error: Python executable "/usr/local/Cellar/python/3.6.4_3/bin/python" is v3.6.4, which is not supported by gyp.
+  gyp ERR! stack You can pass the --python switch to point to Python >= v2.5.0 & < 3.0.0.
+  gyp ERR! stack     at Object.failPythonVersion (/www/btt.local/wordpress/wp-content/themes/btt/node_modules/cachu-slider/node_modules/node-gyp/lib/configure.js:492:19)
+  gyp ERR! stack     at Object.<anonymous> (/www/btt.local/wordpress/wp-content/themes/btt/node_modules/cachu-slider/node_modules/node-gyp/lib/configure.js:474:14)
+  gyp ERR! stack     at ChildProcess.exithandler (child_process.js:190:7)
+  gyp ERR! stack     at emitTwo (events.js:106:13)
+  gyp ERR! stack     at ChildProcess.emit (events.js:191:7)
+  gyp ERR! stack     at maybeClose (internal/child_process.js:920:16)
+  gyp ERR! stack     at Socket.<anonymous> (internal/child_process.js:351:11)
+  gyp ERR! stack     at emitOne (events.js:96:13)
+  gyp ERR! stack     at Socket.emit (events.js:188:7)
+  gyp ERR! stack     at Pipe._handle.close [as _onclose] (net.js:509:12)
+  gyp ERR! System Darwin 17.5.0
+  gyp ERR! command "/Users/ken/.nvm/versions/node/v6.13.0/bin/node" "/www/btt.local/wordpress/wp-content/themes/btt/node_modules/cachu-slider/node_modules/node-gyp/bin/node-gyp.js" "rebuild" "--verbose" "--libsass_ext=" "--libsass_cflags=" "--libsass_ldflags=" "--libsass_library="
+  gyp ERR! cwd /www/btt.local/wordpress/wp-content/themes/btt/node_modules/cachu-slider/node_modules/node-sass
+  gyp ERR! node -v v6.13.0
+  gyp ERR! node-gyp -v v3.6.2
+  gyp ERR! not ok 
+  Build failed with error code: 1
+      at ProcessTermError.Error (native)
+      at ProcessTermError.MessageError (/Users/ken/.nvm/versions/node/v6.13.0/lib/node_modules/yarn/lib/cli.js:186:110)
+      at new ProcessTermError (/Users/ken/.nvm/versions/node/v6.13.0/lib/node_modules/yarn/lib/cli.js:226:113)
+      at ChildProcess.<anonymous> (/Users/ken/.nvm/versions/node/v6.13.0/lib/node_modules/yarn/lib/cli.js:30281:17)
+      at emitTwo (events.js:106:13)
+      at ChildProcess.emit (events.js:191:7)
+      at maybeClose (internal/child_process.js:920:16)
+      at Process.ChildProcess._handle.onexit (internal/child_process.js:230:5)

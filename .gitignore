@@ -1,0 +1,10 @@
+# Include your project-specific ignores in this file
+# Read about how to use .gitignore: https://help.github.com/articles/ignoring-files
+.DS_Store
+bower_components
+npm-debug.log
+node_modules
+*.hot-update.js
+*.hot-update.json
+.idea/
+.vscode/
