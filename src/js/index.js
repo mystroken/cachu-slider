@@ -7,7 +7,8 @@ import CachuEvent from "./cachu-event";
 import CachuNavigation from "./navigation/cachu-navigation";
 import CachuNavigationItem from "./navigation/cachu-navigation-item";
 
-import "../scss/style.scss";
+// Import stylesheet.
+import "../scss/cachu-slider.scss";
 
 const defaultOptions = {
 	scrollingSpeed: 1000,

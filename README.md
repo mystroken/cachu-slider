@@ -42,7 +42,28 @@ Sections should be placed inside a wrapper. The wrapper can not be the body elem
 ```
 
 ### Initialization
+Make sure, before initialization, that the DOM Content is already loaded.
 ```javascript
-let slider = new Cachu(this.elements.container, cachuSliderOptions);
+// Set options.
+const options = {};
+
+// Instantiate the Slider class.
+let slider = new Cachu(document.querySelector('.cachu__container'), options);
+
+// Run the slider.
+slider.run();
+```
+A more complete initialization with all options set could look like this:
+```javascript
+// Set options.
+const options = {
+  scrollingSpeed: 1000, // The speed of the transition.
+  scrollingLoop: true // Loop after reaching the end.
+};
+
+// Instantiate the Slider class.
+let slider = new Cachu(document.querySelector('.cachu__container'), options);
+
+// Run the slider.
 slider.run();
 ```
