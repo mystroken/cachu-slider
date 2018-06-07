@@ -67,3 +67,11 @@ let slider = new Cachu(document.querySelector('.cachu__container'), options);
 // Run the slider.
 slider.run();
 ```
+
+## Options
+- ```scrollingSpeed```: (default ```1000```) Sets the speed of the transition between sections. This value must be greather than or equal to zero (>= 0).
+- ```scrollingLoop```: (default ```true```) Tells the slider if it has to loop the scrolling after reaching the end of sections.
+## Methods
+After instantiating the slider (```var slider = new Cachu(...)```), you get access to all these methods:
+### run()
+You must call this method to run the slide. Else, the content will be hidden.
