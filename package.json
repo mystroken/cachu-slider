@@ -1,8 +1,8 @@
 {
   "name": "cachu-slider",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Create beautiful scrolling websites",
-  "main": "cachu-slider.js",
+  "main": "src/js/index.js",
   "scripts": {
     "build": "webpack ---mode production"
   },
