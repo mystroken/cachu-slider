@@ -1,6 +1,6 @@
 {
   "name": "cachu-slider",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Create beautiful scrolling websites",
   "main": "cachu-slider.js",
   "scripts": {
