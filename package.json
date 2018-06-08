@@ -1,10 +1,10 @@
 {
   "name": "cachu-slider",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Create beautiful scrolling websites",
   "main": "cachu-slider.js",
   "scripts": {
-    "build": "webpack ---mode production --watch"
+    "build": "webpack ---mode production"
   },
   "repository": {
     "type": "git",
@@ -21,12 +21,11 @@
   "keywords": [
     "javacript",
     "scrolling",
-    "single_page",
+    "slider",
     "onepage",
     "fullpage",
-    "one_page",
+    "slideshow",
     "sliding",
-    "snap",
     "scroll"
   ],
   "files": [
@@ -43,9 +42,7 @@
     "babel-cli": "6.26.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",
-    "babel-plugin-transform-async-to-generator": "^6.24.1",
     "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-stage-0": "^6.24.1",
     "babel-runtime": "^6.26.0",
@@ -59,8 +56,10 @@
     "postcss-scss": "^1.0.5",
     "sass-loader": "^7.0.1",
     "style-loader": "^0.21.0",
+    "uglifyjs-webpack-plugin": "^1.2.5",
     "url-loader": "^1.0.1",
     "webpack": "4.8.3",
+    "webpack-bundle-analyzer": "^2.13.1",
     "webpack-cli": "^2.1.3"
   }
 }

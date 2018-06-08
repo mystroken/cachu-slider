@@ -4,7 +4,10 @@
 		"stage-0"
 	],
 	"plugins": [
-		"transform-runtime",
-		"transform-async-to-generator"
+		["transform-runtime", {
+			"helpers": false,
+			"polyfill": true,
+			"regenerator": false
+		  }]
 	]
 }
