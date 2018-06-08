@@ -11,34 +11,21 @@ The particularity of <code>cachu-slider</code> is that it's essentially based on
 <b>Notice</b>: If you don't plan to use animations or transitions on some of the elements of some of your slides, you must ask yourself if you really need to use this library. ( You could consider using <a href="https://github.com/alvarotrigo/fullpage.js/">fullpage.js</a> rather ).
 </p>
 
+Have any suggestions or feedback? Reach out [@mystroken](https://twitter.com/mystroken/)
+
 ## Usage
-You need to include the following files (into ```dist``` folder) in order to let magic work:
-- The stylesheet : ```cachu-slider.css```
-- The main script : ```cachu-slider.js```
-
-For production, it is recommended to include its minified versions.
-
-### Install via npm:
-Optionally, you can install ```cachu-slider``` via npm (for example to use with webpack)
-```bash
-// With npm
-npm install cachu-slider
-
-// With yarn
-yarn add cachu-slider
-```
-
-### Including files:
+### Including the library
+Install via npm  : ```npm install cachu-slider``` <br>
+Or include ```dist``` files directly into your HTML document.
 ```html
 <link rel="stylesheet" type="text/css" href="cachu-slider.css" />
 
 <script type="text/javascript" src="cachu-slider.js"></script>
 ```
 
-### Required HTML Structure
-Each section will be defined with an element containing the section class. The active section by default will be the first section.
 
-Sections should be placed inside a wrapper. The wrapper can not be the body element and it must have the class ```.cachu__container```.
+### Required HTML Structure
+
 ```html
 <div class="cachu__container">
   <section class="cachu__section">Some section</section>
@@ -46,9 +33,13 @@ Sections should be placed inside a wrapper. The wrapper can not be the body elem
   <section class="cachu__section">Some section</section>
 </div>
 ```
+Each section will be defined with an element containing the ```cachu__section``` class. The active section by default will be the first section.
+
+Sections should be placed inside a wrapper. The wrapper can not be the body element and it must have the ```cachu__container``` class.
+
 
 ### Initialization
-Make sure, before initialization, that the DOM Content is already loaded.
+Before initializing the slider, make sure that the DOM Content is already loaded.
 ```javascript
 // Set options.
 const options = {};
