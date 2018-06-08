@@ -4,6 +4,8 @@
 bower_components
 npm-debug.log
 node_modules
+yarn-error.log
+yarn.lock
 *.hot-update.js
 *.hot-update.json
 .idea/
