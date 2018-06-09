@@ -25,7 +25,9 @@ module.exports = {
 	output: {
 		path: path.resolve(__dirname, "dist"),
 		filename: "cachu-slider.min.js",
-		libraryTarget: "assign"
+		library: "Cachu",
+		libraryTarget: "assign",
+		libraryExport: "default"
 	},
 	module: {
 		rules: [
