@@ -2,6 +2,8 @@ const path = require("path");
 const webpack = require("webpack");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const UnminifiedWebpackPlugin = require('unminified-webpack-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const version = require('./package.json').version;
 
@@ -14,15 +16,15 @@ const banner =
 " */\n";
 
 
-const cssExtract = new ExtractTextPlugin({
-	filename: "cachu-slider.css"
+const cssExtractPlugin = new ExtractTextPlugin({
+	filename: "cachu-slider.min.css"
 });
 
 module.exports = {
 	entry: "./src/js/index.js",
 	output: {
 		path: path.resolve(__dirname, "dist"),
-		filename: "cachu-slider.js"
+		filename: "cachu-slider.min.js"
 	},
 	module: {
 		rules: [
@@ -35,7 +37,7 @@ module.exports = {
 			},
 			{
 				test: /\.scss$/,
-				use: cssExtract.extract({
+				use: cssExtractPlugin.extract({
 					fallback: "style-loader",
 					use: ["css-loader", "postcss-loader", "sass-loader"],
 					publicPath: "../"
@@ -79,12 +81,22 @@ module.exports = {
 		]
 	},
 	plugins: [
-		cssExtract,
-		//new BundleAnalyzerPlugin(),
 		new webpack.BannerPlugin({
 			banner,
 			raw: true
-		})
+		}),
+    new UnminifiedWebpackPlugin(),
+		cssExtractPlugin,
+		new OptimizeCssAssetsPlugin({
+      assetNameRegExp: /\.min\.css$/g,
+      cssProcessor: require('cssnano'),
+      cssProcessorOptions: {
+				preset: 'default',
+				discardComments: { removeAll: true }
+			},
+      canPrint: true
+    }),
+		//new BundleAnalyzerPlugin()
 	],
 	optimization: {
 		minimizer: [

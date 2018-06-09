@@ -2,7 +2,7 @@
 
 [![DUB](https://img.shields.io/dub/l/vibe-d.svg?style=for-the-badge)](http://opensource.org/licenses/MIT)
 
-A standalone vanilla js library to create fullscreen or content-fit sliders on your web pages. It is inspired by the famous library [fullpage.js](https://github.com/alvarotrigo/fullpage.js/) by Alvaro Trigo.
+A standalone vanilla javascript library to create animated fullscreen or content-fit sliders on your web pages. It is inspired by the famous library [fullpage.js](https://github.com/alvarotrigo/fullpage.js/) by Alvaro Trigo.
 <p>
 The particularity of <code>cachu-slider</code> is that it's essentially based on Promises (ES6 feature), what is ideal for adding individual animations/transitions to each element of each slider section.
 </p>
@@ -18,11 +18,10 @@ Have any suggestions or feedback? Reach out [@mystroken](https://twitter.com/mys
 Install via npm  : ```npm install cachu-slider``` <br>
 Or include ```dist``` files directly into your HTML document.
 ```html
-<link rel="stylesheet" type="text/css" href="cachu-slider.css" />
-
-<script type="text/javascript" src="cachu-slider.js"></script>
+<link rel="stylesheet" type="text/css" href="cachu-slider.min.css">
+<script type="text/javascript" src="cachu-slider.min.js"></script>
 ```
-
+If you plan to use the library into a webpack project, you must read our [advanced guide](https://github.com/mystroken/cachu-slider/wiki/Include-cachu-slider-to-your-project) for including necessary files.
 
 ### Required HTML Structure
 
@@ -73,8 +72,11 @@ After instantiating the slider (```var slider = new Cachu(...)```), you get acce
 ### run()
 You must call this method to run the slide. Else, the content will be hidden.
 
+## Reporting issues
+If you find a bug or have compatibility issues, please open a ticket under issues section for this repository.
+
 ## Contributing to cachu-slider
-Please see [Contributing to cachu-slider](https://github.com/mystroken/cachu-slider/wiki/Contributing-to-cachu-slider).
+Please see [Contributing to cachu slider](https://github.com/mystroken/cachu-slider/wiki/Contributing-to-cachu-slider).
 
 ## License
 ```cachu-slider``` is an open sourced project using [MIT license](http://opensource.org/licenses/MIT).
