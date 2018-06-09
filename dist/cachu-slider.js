@@ -1,9 +1,9 @@
 /**!
- * Cachu Slider v0.1.3
+ * Cachu Slider v0.1.4
  * Copyright (c) 2018 Mystro Ken <mystroken@gmail.com>
  * MIT License
  */
-/******/ (function(modules) { // webpackBootstrap
+(function(e, a) { for(var i in a) e[i] = a[i]; }(window, /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
 /******/
@@ -4273,4 +4273,4 @@ exports.default = Cachu;
 // removed by extract-text-webpack-plugin
 
 /***/ })
-/******/ ]);
+/******/ ])));
