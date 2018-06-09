@@ -9,7 +9,7 @@ const version = require('./package.json').version;
 
 
 const banner =
-"/**!\n" +
+"/*!\n" +
 " * Cachu Slider v" + version + "\n" +
 " * Copyright (c) " + (new Date().getFullYear()) + " Mystro Ken <mystroken@gmail.com>\n" +
 " * MIT License\n" +
@@ -94,10 +94,8 @@ module.exports = {
       assetNameRegExp: /\.min\.css$/g,
       cssProcessor: require('cssnano'),
       cssProcessorOptions: {
-				preset: 'default',
-				discardComments: { removeAll: true }
-			},
-      canPrint: true
+				preset: 'default'
+			}
     }),
 		//new BundleAnalyzerPlugin()
 	],

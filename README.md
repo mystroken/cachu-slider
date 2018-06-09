@@ -14,7 +14,7 @@ The particularity of <code>cachu-slider</code> is that it's essentially based on
 Have any suggestions or feedback? Reach out [@mystroken](https://twitter.com/mystroken/)
 
 ## Usage
-### Including the library
+### 1. Including the library
 Install via npm  : ```npm install cachu-slider``` <br>
 Or include ```dist``` files directly into your HTML document.
 ```html
@@ -23,7 +23,7 @@ Or include ```dist``` files directly into your HTML document.
 ```
 If you plan to use the library into a webpack project, you must read our [advanced guide](https://github.com/mystroken/cachu-slider/wiki/Include-cachu-slider-to-your-project) for including necessary files.
 
-### Required HTML Structure
+### 2. Required HTML Structure
 
 ```html
 <div class="cachu__container">
@@ -37,7 +37,7 @@ Each section will be defined with an element containing the ```cachu__section```
 Sections should be placed inside a wrapper. The wrapper can not be the body element and it must have the ```cachu__container``` class.
 
 
-### Initialization
+### 3. Instantiate the slider
 Before initializing the slider, make sure that the DOM Content is already loaded.
 ```javascript
 // Set options.
