@@ -6,10 +6,10 @@
   "eqnull": true,
   "esnext": true,
   "immed": true,
-  "jquery": true,
+  "jquery": false,
   "latedef": true,
   "newcap": true,
   "noarg": true,
   "node": true,
-  "strict": false
+  "strict": true
 }

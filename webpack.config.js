@@ -1,9 +1,7 @@
 const path = require("path");
 const webpack = require("webpack");
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const UnminifiedWebpackPlugin = require('unminified-webpack-plugin');
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const version = require('./package.json').version;
 
@@ -15,10 +13,6 @@ const banner =
 " * MIT License\n" +
 " */\n";
 
-
-const cssExtractPlugin = new ExtractTextPlugin({
-	filename: "cachu-slider.min.css"
-});
 
 module.exports = {
 	entry: "./src/js/index.js",
@@ -37,49 +31,6 @@ module.exports = {
 				use: {
 					loader: "babel-loader"
 				}
-			},
-			{
-				test: /\.scss$/,
-				use: cssExtractPlugin.extract({
-					fallback: "style-loader",
-					use: ["css-loader", "postcss-loader", "sass-loader"],
-					publicPath: "../"
-				})
-			},
-			{
-				test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
-				loader: "file-loader",
-				options: {
-					name: "[name].[hash:7].[ext]",
-					outputPath: "fonts/"
-				}
-			},
-			{
-				test: /\.(png|jpg|jpeg|gif)$/,
-				use: [
-					{
-						loader: "url-loader",
-						options: {
-							limit: 8192,
-							name: "[name].[hash:7].[ext]",
-							outputPath: "img/"
-						}
-					},
-					{
-						loader: "img-loader",
-						options: {
-							enabled: true
-						}
-					}
-				]
-			},
-			{
-				test: /\.(svg)$/,
-				loader: "file-loader",
-				options: {
-					name: "[name].[hash:7].[ext]",
-					outputPath: "svg/"
-				}
 			}
 		]
 	},
@@ -88,15 +39,7 @@ module.exports = {
 			banner,
 			raw: true
 		}),
-    new UnminifiedWebpackPlugin(),
-		cssExtractPlugin,
-		new OptimizeCssAssetsPlugin({
-      assetNameRegExp: /\.min\.css$/g,
-      cssProcessor: require('cssnano'),
-      cssProcessorOptions: {
-				preset: 'default'
-			}
-    }),
+    new UnminifiedWebpackPlugin()
 		//new BundleAnalyzerPlugin()
 	],
 	optimization: {

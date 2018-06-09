@@ -3932,15 +3932,11 @@ var _cachuNavigationItem = __webpack_require__(18);
 
 var _cachuNavigationItem2 = _interopRequireDefault(_cachuNavigationItem);
 
-__webpack_require__(114);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var debounce = __webpack_require__(56);
-
-// Import stylesheet.
 
 
 var defaultOptions = {
@@ -4262,16 +4258,6 @@ var Cachu = function () {
 }();
 
 exports.default = Cachu;
-
-/***/ }),
-/* 110 */,
-/* 111 */,
-/* 112 */,
-/* 113 */,
-/* 114 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ])["default"];

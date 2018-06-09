@@ -8,10 +8,6 @@ import CachuNavigation from "./navigation/cachu-navigation";
 import CachuNavigationItem from "./navigation/cachu-navigation-item";
 
 
-// Import stylesheet.
-import "../scss/cachu-slider.scss";
-
-
 const defaultOptions = {
 	scrollingSpeed: 1000,
 	scrollingLoop: true
