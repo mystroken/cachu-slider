@@ -1,8 +1,18 @@
 
 .cachu__container {
-	visibility: hidden;
 	height: 100%;
 	width: 100%;
+}
+
+.cachu__container--content-fit {
+
+	.cachu__section {
+		height: 100%;
+	}
+}
+
+.cachu__sections {
+	visibility: hidden;
 }
 
 .cachu__section {

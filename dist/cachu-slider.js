@@ -1,5 +1,5 @@
 /*!
- * Cachu Slider v0.1.5
+ * Cachu Slider v0.1.6
  * Copyright (c) 2018 Mystro Ken <mystroken@gmail.com>
  * MIT License
  */

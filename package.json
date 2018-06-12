@@ -1,11 +1,14 @@
 {
   "name": "cachu-slider",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Cachu Slider library by Mystro Ken. Create animated full screen and content-fit slider efficiently.",
   "main": "src/js/index.js",
   "scripts": {
+		"dev": "npm-run-parallel dev-script dev-style",
 		"build": "npm-run-parallel build-script build-style",
+		"dev-style": "gulp watch",
 		"build-style": "gulp sass & gulp css",
+		"dev-script": "webpack ---mode development --watch",
 		"build-script": "webpack ---mode production"
   },
   "repository": {

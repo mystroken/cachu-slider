@@ -16,7 +16,7 @@ const defaultOptions = {
 
 export default class Cachu {
 
-	constructor(container, options = {}) {
+	constructor(wrapper, options = {}) {
 		/**
 		 * Setting up the state of
 		 * the animator
@@ -54,8 +54,9 @@ export default class Cachu {
 		 */
 		this.elements = {
 			body: document.querySelector('body'),
-			container: container,
-			sections: container.querySelectorAll('.cachu__section')
+			wrapper: wrapper,
+			container: wrapper.querySelector('.cachu__sections'),
+			sections: wrapper.querySelectorAll('.cachu__section')
 		};
 
 		/**
@@ -124,8 +125,8 @@ export default class Cachu {
 		return new Promise((resolve, reject) => {
 
 			// Rendering the slider.
-			this.elements.body.style.overflow = "hidden";
-			this.elements.body.style.height = "100%";
+			this.elements.wrapper.style.overflow = "hidden";
+			this.elements.wrapper.style.height = "100%";
 
 			this.elements.container.style.webkitTransition = `-webkit-transform ${this.options.scrollingSpeed}ms cubic-bezier(.56,.12,.12,.98)`;
 			this.elements.container.style.msTransition = `-ms-transform ${this.options.scrollingSpeed}ms cubic-bezier(.56,.12,.12,.98)`;
@@ -278,8 +279,8 @@ export default class Cachu {
 	}
 
 	destroy() {
-		// Reset the body attribute.
-		this.elements.body.style.overflow = "auto";
-		this.elements.body.style.height = "auto";
+		// Reset the wrapper attribute.
+		this.elements.wrapper.style.overflow = "auto";
+		this.elements.wrapper.style.height = "auto";
 	}
 }
