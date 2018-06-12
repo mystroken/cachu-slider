@@ -126,7 +126,6 @@ export default class Cachu {
 
 			// Rendering the slider.
 			this.elements.wrapper.style.overflow = "hidden";
-			this.elements.wrapper.style.height = "100%";
 
 			this.elements.container.style.webkitTransition = `-webkit-transform ${this.options.scrollingSpeed}ms cubic-bezier(.56,.12,.12,.98)`;
 			this.elements.container.style.msTransition = `-ms-transform ${this.options.scrollingSpeed}ms cubic-bezier(.56,.12,.12,.98)`;
@@ -281,6 +280,5 @@ export default class Cachu {
 	destroy() {
 		// Reset the wrapper attribute.
 		this.elements.wrapper.style.overflow = "auto";
-		this.elements.wrapper.style.height = "auto";
 	}
 }
