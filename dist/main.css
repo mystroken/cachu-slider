@@ -1,0 +1,188 @@
+/*!
+ * Cachu Slider v0.2.0
+ * Copyright (c) 2018 Mystro Ken <mystroken@gmail.com>
+ * MIT License
+ */
+.cachu__container {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.cachu__container--content-fit .cachu__section {
+  height: 100%;
+}
+
+.cachu__sections {
+  visibility: hidden;
+  /* Remove spacing between sections */
+  display: flex;
+  flex-direction: column;
+}
+
+.cachu__section {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+}
+
+/*
+ * Base.
+ */
+.cachu__nav {
+  position: absolute;
+  z-index: 50;
+}
+
+.cachu__nav__items,
+.cachu__nav__item {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+.cachu__nav__items {
+  width: 100%;
+}
+
+.cachu__nav__item {
+  position: relative;
+  height: 1rem;
+  width: 1rem;
+}
+
+.cachu__nav__button {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: scale(0.5);
+  transition-property: transform;
+  transition-duration: 100ms;
+  transition-timing-function: ease-in-out;
+  background-color: #ffffff;
+  border-radius: 50%;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.active .cachu__nav__button {
+  transform: scale(1);
+  margin: auto;
+}
+
+.cachu__nav__tooltip {
+  position: absolute;
+  top: 50%;
+  right: 1.5rem;
+  right: calc(2.5rem);
+  color: #ffffff;
+  font-size: 14px;
+  font-family: inherit;
+  white-space: nowrap;
+  width: 0;
+  max-width: 220px;
+  overflow: hidden;
+  display: block;
+  opacity: 0;
+  cursor: pointer;
+  transform: translate3d(0, -50%, 0);
+  transition: all 250ms ease-in-out;
+}
+
+.active .cachu__nav__tooltip {
+  opacity: 1;
+  width: auto;
+}
+
+/*
+ * Common to Left & Right Navigation.
+ */
+.cachu__nav--left,
+.cachu__nav--right {
+  top: 50%;
+  width: 1rem;
+  transform: translate3d(0, -50%, 0);
+}
+
+.cachu__nav--left .cachu__nav__items,
+.cachu__nav--left .cachu__nav__item,
+.cachu__nav--right .cachu__nav__items,
+.cachu__nav--right .cachu__nav__item {
+  flex-direction: column;
+}
+
+.cachu__nav--left .cachu__nav__item:not(:first-of-type),
+.cachu__nav--right .cachu__nav__item:not(:first-of-type) {
+  margin-top: 0.5rem;
+}
+
+/*
+ * Common to Top & Bottom Navigation.
+ */
+.cachu__nav--top,
+.cachu__nav--bottom {
+  left: 50%;
+  height: 1rem;
+  transform: translate3d(-50%, 0, 0);
+}
+
+.cachu__nav--top .cachu__nav__items,
+.cachu__nav--top .cachu__nav__item,
+.cachu__nav--bottom .cachu__nav__items,
+.cachu__nav--bottom .cachu__nav__item {
+  flex-direction: row;
+}
+
+.cachu__nav--top .cachu__nav__item:not(:first-of-type),
+.cachu__nav--bottom .cachu__nav__item:not(:first-of-type) {
+  margin-left: 0.5rem;
+}
+
+.cachu__nav--top .cachu__nav__tooltip,
+.cachu__nav--bottom .cachu__nav__tooltip {
+  display: none;
+}
+
+/*
+ * Specific to Top Navigation.
+ */
+.cachu__nav--top {
+  top: 1.5rem;
+}
+
+/*
+ * Specific to Bottom Navigation.
+ */
+.cachu__nav--bottom {
+  bottom: 1.5rem;
+}
+
+/*
+ * Specific to Right Navigation.
+ */
+.cachu__nav--right {
+  right: 1.5rem;
+}
+
+.cachu__nav--right .cachu__nav__tooltip {
+  right: 1.5rem;
+  right: calc(2.5rem);
+}
+
+/*
+ * Specific to Left Navigation.
+ */
+.cachu__nav--left {
+  left: 1.5rem;
+}
+
+.cachu__nav--left .cachu__nav__tooltip {
+  left: 1.5rem;
+  left: calc(2.5rem);
+}

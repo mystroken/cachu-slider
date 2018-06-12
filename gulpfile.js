@@ -16,7 +16,7 @@ var comment =
 
 gulp.task("sass", function() {
 	gulp
-		.src("./src/scss/cachu-slider.scss")
+		.src("./src/scss/main.scss")
 		.pipe(
 			sass({
 				outputStyle: "expanded"

@@ -1,4 +1,5 @@
 import CachuNavigationList from "./cachu-navigation-list";
+import { addClass } from "../helpers";
 
 export default class CachuNavigation {
 
@@ -24,15 +25,18 @@ export default class CachuNavigation {
 
 		// Set the container
 		this.elements.container.setAttribute("id", "cachu-nav");
-		this.elements.container.classList.add("cachu__nav");
+		addClass(this.elements.container, "cachu__nav");
 	}
 
 	/**
 	 * Insert navigation to the DOM.
 	 */
-	render(parentNode = null) {
+	render(parentNode = null, position = 'right') {
 		// Retrieve the Navigation Items from the list.
 		this.elements.container.appendChild(this.navigationList.generateNodeList());
+
+		// Set the position of the navigation
+		addClass(this.elements.container, 'cachu__nav--' + position);
 
 		// Insert to DOM.
 		if (null === parentNode) document.body.appendChild(this.elements.container);

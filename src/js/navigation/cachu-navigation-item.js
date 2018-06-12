@@ -1,3 +1,4 @@
+import { addClass, removeClass } from "../helpers";
 
 
 export default class CachuNavigationItem {
@@ -19,7 +20,7 @@ export default class CachuNavigationItem {
 			container: document.createElement("li"),
 			anchor: document.createElement("a"),
 			span: document.createElement("span"),
-			tooltip: document.createElement("div")
+			tooltip: document.createElement("span")
 		};
 
 		// Init the stuff
@@ -28,17 +29,20 @@ export default class CachuNavigationItem {
 
 	initialize() {
 		// Initializes the Tooltip.
-		this.elements.tooltip.classList.add("cachu__nav__tooltip");
+		addClass(this.elements.tooltip, "cachu__nav__tooltip");
 
 		// Initializes the span.
 		// Nothing to do for the moment.
 
 		// Initializes the anchor.
-		this.elements.anchor.appendChild(this.elements.span);
+		addClass(this.elements.anchor, "cachu__nav__button");
+		//this.elements.anchor.appendChild(this.elements.span);
 
 		// Initalizes the list item element.
+		addClass(this.elements.container, "cachu__nav__item");
+		// Append tooltip if it exists.
+		//this.elements.container.appendChild(this.elements.tooltip);
 		this.elements.container.appendChild(this.elements.anchor);
-		this.elements.container.appendChild(this.elements.tooltip);
 	}
 
 	/**
@@ -49,11 +53,11 @@ export default class CachuNavigationItem {
 	}
 
 	activate() {
-		this.elements.anchor.classList.add("active");
+		addClass(this.elements.container, "active");
 	}
 
 	deactivate() {
-		this.elements.anchor.classList.remove("active");
+		removeClass(this.elements.container, "active");
 	}
 
 }

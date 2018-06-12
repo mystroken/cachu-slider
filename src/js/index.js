@@ -6,11 +6,22 @@ import CachuSlideListItem from "./slide-list-item";
 import CachuEvent from "./cachu-event";
 import CachuNavigation from "./navigation/cachu-navigation";
 import CachuNavigationItem from "./navigation/cachu-navigation-item";
+import {
+	CACHU_MODE_FULL_PAGE,
+	CACHU_MODE_CONTENT_FIT,
+	hasClass,
+	getOuterHeight,
+	getSectionsMaxHeight,
+	setSectionsHeight
+} from "./helpers";
 
 
 const defaultOptions = {
-	scrollingSpeed: 1000,
-	scrollingLoop: true
+  disableMouseEvents: false, // Disable mousewheel event listening.
+	scrollingSpeed: 1000,  // The speed of the transition.
+  scrollingLoop: true,  // Loop after reaching the end.
+  navigationEnabled: true, // Enable navigation buttons
+  navigationPosition: 'right'  // The Navigation's position
 };
 
 
@@ -22,11 +33,13 @@ export default class Cachu {
 		 * the animator
 		 */
 		this.state = {
+			mode: CACHU_MODE_FULL_PAGE, // Default mode.
 			isInitialized: false,
 			isRendered: false,
 			isPaused: true,
 			isRunning: false,
-			isScrolling: false
+			isScrolling: false,
+			wrapperHeight: 0
 		};
 
 		/**
@@ -53,7 +66,6 @@ export default class Cachu {
 		 * manipulated by the animator.
 		 */
 		this.elements = {
-			body: document.querySelector('body'),
 			wrapper: wrapper,
 			container: wrapper.querySelector('.cachu__sections'),
 			sections: wrapper.querySelectorAll('.cachu__section')
@@ -84,6 +96,9 @@ export default class Cachu {
 	initialize() {
 
 		if (false === this.state.isInitialized) {
+
+			// Set mode
+			this.state.mode = this._detectMode();
 
 			this.elements.sections.forEach(element => {
 				let navigationItem = new CachuNavigationItem();
@@ -124,17 +139,19 @@ export default class Cachu {
 	_render() {
 		return new Promise((resolve, reject) => {
 
-			// Rendering the slider.
-			this.elements.wrapper.style.overflow = "hidden";
+			// Hydrate the slider wrapper.
+			this._hydrateSlider();
 
 			this.elements.container.style.webkitTransition = `-webkit-transform ${this.options.scrollingSpeed}ms cubic-bezier(.56,.12,.12,.98)`;
 			this.elements.container.style.msTransition = `-ms-transform ${this.options.scrollingSpeed}ms cubic-bezier(.56,.12,.12,.98)`;
 			this.elements.container.style.transition = `transform ${this.options.scrollingSpeed}ms cubic-bezier(.56,.12,.12,.98)`;
 
 			// Attach events.
-			const hamster = Hamster(this.elements.container);
-			const onMouseWheelDebounced = debounce((event, delta) => this._onMouseWheel(delta), 0, { "maxWait": 1000 });
-			hamster.wheel(onMouseWheelDebounced);
+			if ( false === this.options.disableMouseEvents ) {
+				const hamster = Hamster(this.elements.container);
+				const onMouseWheelDebounced = debounce((event, delta) => this._onMouseWheel(delta), 0, { "maxWait": 1000 });
+				hamster.wheel(onMouseWheelDebounced);
+			}
 
 			// Hook navigation actions.
 			var cachuSlideListItem = this.slideList.head;
@@ -156,7 +173,7 @@ export default class Cachu {
 
 
 			// Render the navigation
-			this.navigation.render(this.elements.container.parentNode);
+			if ( true === this.options.navigationEnabled ) this.navigation.render(this.elements.wrapper, this.options.navigationPosition);
 
 			this.elements.container.style.visibility = "visible";
 
@@ -277,8 +294,42 @@ export default class Cachu {
 		return Promise.resolve();
 	}
 
-	destroy() {
+	_hydrateSlider() {
+		// First, we should find an apropriate
+		// height for the wrapper.
+		// Then we'll force each section to fit that height.
+
+
+		// Get the apropriate height of the wrapper.
+		this.state.wrapperHeight = ( CACHU_MODE_CONTENT_FIT === this.state.mode )
+			? getSectionsMaxHeight(this.elements.sections)
+			: getOuterHeight(this.elements.wrapper)
+		;
+
+		// Fix the wrapper height and hide overflow.
+		this.elements.wrapper.style.height = this.state.wrapperHeight + "px";
+		this.elements.wrapper.style.overflow = "hidden";
+
+		// Fix the height of each section.
+		setSectionsHeight(this.elements.sections, this.state.wrapperHeight);
+	}
+
+	_dehydrateSlider() {
+		this.state.wrapperHeight = 0;
+
 		// Reset the wrapper attribute.
+		this.elements.wrapper.style.height = "auto";
 		this.elements.wrapper.style.overflow = "auto";
+	}
+
+	_detectMode() {
+		return ( true === hasClass(this.elements.wrapper, "cachu__container--content-fit") )
+			? CACHU_MODE_CONTENT_FIT
+			: CACHU_MODE_FULL_PAGE
+		;
+	}
+
+	destroy() {
+		this._dehydrateSlider();
 	}
 }

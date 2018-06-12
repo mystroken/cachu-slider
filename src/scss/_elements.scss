@@ -1,0 +1,26 @@
+.cachu__container {
+	position: relative;
+	height: 100%;
+	width: 100%;
+}
+
+.cachu__container--content-fit {
+
+	.cachu__section {
+		height: 100%;
+	}
+}
+
+.cachu__sections {
+	visibility: hidden;
+
+	/* Remove spacing between sections */
+	display: flex;
+	flex-direction: column;
+}
+
+.cachu__section {
+	position: relative;
+	height: 100vh;
+	width: 100%;
+}

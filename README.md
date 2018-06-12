@@ -27,46 +27,63 @@ If you plan to use the library into a webpack project, you must read our [advanc
 
 ```html
 <div class="cachu__container">
-  <section class="cachu__section">Some section</section>
-  <section class="cachu__section">Some section</section>
-  <section class="cachu__section">Some section</section>
+  <!-- All sections are wrapped inside .cachu__sections  -->
+  <div class="cachu__sections">
+	<section class="cachu__section">Some section</section>
+	<section class="cachu__section">Some section</section>
+	<section class="cachu__section">Some section</section>
+  </div>
+  <!-- End of section  -->
+  <!-- Navigation fill be dynamically added here (via JavaScript) -->
 </div>
 ```
 Each section will be defined with an element containing the ```cachu__section``` class. The active section by default will be the first section.
 
-Sections should be placed inside a wrapper. The wrapper can not be the body element and it must have the ```cachu__container``` class.
+Slider elements should be placed inside a wrapper. The wrapper can not be the body element and it must have the ```cachu__container``` class.
+
+This structure will generate, by default, a fullpage slider. If you want a content-fit slider rather, you should add to the wrapper ```cachu__container--content-fit``` class too.
+
+```<div class="cachu__container cachu__container--content-fit">```
 
 
 ### 3. Instantiate the slider
 Before initializing the slider, make sure that the DOM Content is already loaded.
 ```javascript
-// Set options.
+//
+// Now let's turn on our slider!
+//
+// 1. Set some options.
+// 2. Instantiate the Slider with the DOM Element instance of the wrapper.
+// 3. Run the slider !!
 const options = {};
-
-// Instantiate the Slider class.
 let slider = new Cachu(document.querySelector('.cachu__container'), options);
-
-// Run the slider.
 slider.run();
 ```
 A more complete initialization with all options set could look like this:
 ```javascript
-// Set options.
+// Complete options.
 const options = {
-  scrollingSpeed: 1000, // The speed of the transition.
-  scrollingLoop: true // Loop after reaching the end.
+  disableMouseEvents: false, // Disable mousewheel event listening.
+  scrollingSpeed: 1000,  // The speed of the transition.
+  scrollingLoop: true,  // Loop after reaching the end.
+  navigationEnabled: true, // Enable navigation buttons
+  navigationPosition: 'right'  // The Navigation's position
 };
 
-// Instantiate the Slider class.
 let slider = new Cachu(document.querySelector('.cachu__container'), options);
-
-// Run the slider.
 slider.run();
 ```
 
 ## Options
-- ```scrollingSpeed```: (default ```1000```) Sets the speed of the transition between sections. This value must be greather than or equal to zero (>= 0).
-- ```scrollingLoop```: (default ```true```) Tells the slider if it has to loop the scrolling after reaching the end of sections.
+- ```disableMouseEvents```: *boolean* (default ```false```) Disable listening mousewheel events. This feature may be interesting if you only want to scroll through navigation buttons.
+- ```scrollingSpeed```: *int* (default ```1000```) Sets the speed of the transition between sections. This value must be greather than or equal to zero (>= 0).
+* ```scrollingLoop```: *boolean* (default ```true```) Tells the slider if it has to loop the scrolling after reaching the end of sections.
+* ```navigationEnabled```: *boolean* (default ```true```) Tells the slider to display or not the navigation buttons.
+* ```navigationPosition```: *string* (default ```right```) Sets the position of the navigation (if enabled). Possible values are:
+	- ```top```: Fix navigation to the top.
+	- ```right```: Fix navigation to the right.
+	- ```bottom```: Fix navigation to the bottom.
+	- ```left```: Fix navigation to the left.
 ## Methods
 After instantiating the slider (```var slider = new Cachu(...)```), you get access to all these methods:
 ### run()

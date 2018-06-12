@@ -1,0 +1,163 @@
+
+/*
+ * Base.
+ */
+.cachu__nav {
+	position: absolute;
+	z-index: $cachu__nav--zIndex;
+}
+
+.cachu__nav__items,
+.cachu__nav__item {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+
+	display: flex;
+	align-content: center;
+	justify-content: center;
+}
+
+.cachu__nav__items {
+	width: 100%;
+}
+
+.cachu__nav__item {
+	position: relative;
+	height: $cachu__nav--height;
+	width: $cachu__nav--width;
+}
+
+.cachu__nav__button {
+	display: block;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	transform: scale(.5);
+
+	transition-property: transform;
+	transition-duration: 100ms;
+	transition-timing-function: ease-in-out;
+
+	background-color: $cachu__nav--color;
+	border-radius: 50%;
+	text-decoration: none;
+	cursor: pointer;
+
+	.active & {
+		transform: scale(1);
+		margin: auto;
+	}
+}
+
+	.cachu__nav__tooltip {
+		position: absolute;
+		top: 50%;
+		right: $cachu--gutter;
+		right: calc(#{($cachu--gutter) + $cachu__nav--width});
+		color: $cachu__nav__tooltip-color;
+		font-size: 14px;
+		font-family: inherit;
+		white-space: nowrap;
+		width: 0;
+		max-width: 220px;
+		overflow: hidden;
+		display: block;
+		opacity: 0;
+		cursor: pointer;
+		transform: translate3d(0,-50%,0);
+		transition: all 250ms ease-in-out;
+
+		.active & {
+			opacity: 1;
+			width: auto;
+		}
+	}
+
+/*
+ * Common to Left & Right Navigation.
+ */
+ .cachu__nav--left,
+ .cachu__nav--right {
+	top: 50%;
+	width: $cachu__nav--width;
+	transform: translate3d(0,-50%,0);
+
+	.cachu__nav__items,
+	.cachu__nav__item {
+		flex-direction: column;
+	}
+
+	.cachu__nav__item {
+		&:not(:first-of-type) {
+			margin-top: $cachu--gutter/3;
+		}
+	}
+ }
+
+/*
+ * Common to Top & Bottom Navigation.
+ */
+ .cachu__nav--top,
+ .cachu__nav--bottom {
+	left: 50%;
+	height: $cachu__nav--height;
+	transform: translate3d(-50%,0,0);
+
+	.cachu__nav__items,
+	.cachu__nav__item {
+		flex-direction: row;
+	}
+
+	.cachu__nav__item {
+		&:not(:first-of-type) {
+			margin-left: $cachu--gutter/3;
+		}
+	}
+
+	.cachu__nav__tooltip {
+		display: none;
+	}
+}
+
+/*
+ * Specific to Top Navigation.
+ */
+.cachu__nav--top {
+	top: $cachu--gutter;
+}
+
+
+/*
+ * Specific to Bottom Navigation.
+ */
+ .cachu__nav--bottom {
+	bottom: $cachu--gutter;
+}
+
+/*
+ * Specific to Right Navigation.
+ */
+.cachu__nav--right {
+	right: $cachu--gutter;
+
+	.cachu__nav__tooltip {
+		right: $cachu--gutter;
+		right: calc(#{($cachu--gutter) + $cachu__nav--width});
+	}
+}
+
+
+/*
+ * Specific to Left Navigation.
+ */
+.cachu__nav--left {
+	left: $cachu--gutter;
+
+	.cachu__nav__tooltip {
+		left: $cachu--gutter;
+		left: calc(#{($cachu--gutter) + $cachu__nav--width});
+	}
+}

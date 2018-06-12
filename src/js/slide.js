@@ -52,7 +52,7 @@ export default class CachuSlide {
 		this.navigationItem = navigationItem;
 
 		// Initiailze the slide
-		//this._initialize();
+		this._initialize();
 	}
 
 	_enter() {
@@ -75,7 +75,8 @@ export default class CachuSlide {
 			}
 
 			// Scroll the container to the correct viewport.
-			this.slider.elements.container.style.transform = "translate3d(0,"+(-100 * (this.index - 1))+"vh,0)";
+			const translateY = (-1 * this.slider.state.wrapperHeight) * (this.index - 1);
+			this.slider.elements.container.style.transform = "translate3d(0,"+translateY+"px,0)";
 
 			// If the scrolling speed is not
 			// greater than zero, resolve immediatly.
@@ -92,20 +93,5 @@ export default class CachuSlide {
 		});
 	}
 
-	_initialize() {
-
-		let transitionEvent = whichTransitionEvent();
-
-		this.slider.elements.container.addEventListener(transitionEvent, (e) => {
-			e = window.event || e;
-			e.cancelBubble = true;
-			e.stopPropagation();
-
-			if (e.target === this.slider.elements.container) {
-				console.log("Transition on parent ended!");
-			}
-		}, false);
-	}
-
-	_resolveJudiciously() {}
+	_initialize() {}
 }

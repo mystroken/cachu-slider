@@ -1,4 +1,5 @@
 import CachuNavigationItem from "./cachu-navigation-item";
+import { addClass } from "../helpers";
 
 export default class CachuNavigationList {
 	constructor() {
@@ -45,6 +46,8 @@ export default class CachuNavigationList {
 
 
 	generateNodeList() {
+		addClass(this.elements.container, "cachu__nav__items");
+
 		this.items.forEach((item) => {
 			this.elements.container.appendChild(item.elements.container);
 		});
