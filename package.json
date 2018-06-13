@@ -1,6 +1,6 @@
 {
   "name": "cachu-slider",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "Cachu Slider library by Mystro Ken. Create animated full screen and content-fit slider efficiently.",
   "main": "src/js/index.js",
   "scripts": {

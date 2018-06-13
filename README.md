@@ -27,12 +27,15 @@ If you plan to use the library into a webpack project, you must read our [advanc
 
 ```html
 <div class="cachu__container">
+
   <!-- All sections are wrapped inside .cachu__sections  -->
+
   <div class="cachu__sections">
-	<section class="cachu__section">Some section</section>
-	<section class="cachu__section">Some section</section>
-	<section class="cachu__section">Some section</section>
+    <section class="cachu__section">Some section</section>
+    <section class="cachu__section">Some section</section>
+    <section class="cachu__section">Some section</section>
   </div>
+
   <!-- End of section  -->
   <!-- Navigation fill be dynamically added here (via JavaScript) -->
 </div>
@@ -55,6 +58,7 @@ Before initializing the slider, make sure that the DOM Content is already loaded
 // 1. Set some options.
 // 2. Instantiate the Slider with the DOM Element instance of the wrapper.
 // 3. Run the slider !!
+
 const options = {};
 let slider = new Cachu(document.querySelector('.cachu__container'), options);
 slider.run();
