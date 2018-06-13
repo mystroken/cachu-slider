@@ -1,6 +1,9 @@
-import { whichTransitionEvent } from "./helpers";
 import CachuEvent from "./cachu-event";
-import CachuNavigationItem from "./navigation/cachu-navigation-item";
+import {
+	addClass,
+	removeClass,
+	whichTransitionEvent
+} from "./helpers";
 
 export default class CachuSlide {
 	constructor(section, slider, navigationItem) {
@@ -69,6 +72,7 @@ export default class CachuSlide {
 					e.stopPropagation();
 
 					if (e.target === this.slider.elements.container) {
+						//addClass(this.elements.section, "active");
 						resolve();
 					}
 				}, false);
@@ -88,9 +92,15 @@ export default class CachuSlide {
 	}
 
 	_leave() {
+
 		return new Promise((resolve, reject) => {
+			this.deactivate();
 			resolve();
 		});
+	}
+
+	deactivate() {
+		//removeClass(this.elements.section, "active");
 	}
 
 	_initialize() {}

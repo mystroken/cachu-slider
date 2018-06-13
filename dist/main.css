@@ -9,10 +9,6 @@
   width: 100%;
 }
 
-.cachu__container--content-fit .cachu__section {
-  height: 100%;
-}
-
 .cachu__sections {
   visibility: hidden;
   /* Remove spacing between sections */
@@ -22,7 +18,7 @@
 
 .cachu__section {
   position: relative;
-  height: 100vh;
+  height: 100%;
   width: 100%;
 }
 
@@ -156,6 +152,10 @@
   top: 1.5rem;
 }
 
+.cachu__container--content-fit .cachu__nav--top {
+  top: 0;
+}
+
 /*
  * Specific to Bottom Navigation.
  */
@@ -163,11 +163,19 @@
   bottom: 1.5rem;
 }
 
+.cachu__container--content-fit .cachu__nav--bottom {
+  bottom: 0;
+}
+
 /*
  * Specific to Right Navigation.
  */
 .cachu__nav--right {
   right: 1.5rem;
+}
+
+.cachu__container--content-fit .cachu__nav--right {
+  right: 0;
 }
 
 .cachu__nav--right .cachu__nav__tooltip {
@@ -180,6 +188,10 @@
  */
 .cachu__nav--left {
   left: 1.5rem;
+}
+
+.cachu__container--content-fit .cachu__nav--left {
+  left: 0;
 }
 
 .cachu__nav--left .cachu__nav__tooltip {

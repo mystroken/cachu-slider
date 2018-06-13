@@ -5,10 +5,6 @@
 }
 
 .cachu__container--content-fit {
-
-	.cachu__section {
-		height: 100%;
-	}
 }
 
 .cachu__sections {
@@ -21,6 +17,6 @@
 
 .cachu__section {
 	position: relative;
-	height: 100vh;
+	height: 100%;
 	width: 100%;
 }

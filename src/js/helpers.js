@@ -82,7 +82,8 @@ export function addClass(el, className) {
  * @param {HTMLElement} el
  * @param {string} className
  */
-export function removeClass(el, className) {
+export const removeClass = (el, className) => {
+	//console.log(el);
 	if (el.classList) el.classList.remove(className);
 	else el.className = el.className.replace(new RegExp('(^|\\b)' + className.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
 }

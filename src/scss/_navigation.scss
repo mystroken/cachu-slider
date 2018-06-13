@@ -127,6 +127,10 @@
  */
 .cachu__nav--top {
 	top: $cachu--gutter;
+
+	.cachu__container--content-fit & {
+		top: 0;
+	}
 }
 
 
@@ -135,6 +139,10 @@
  */
  .cachu__nav--bottom {
 	bottom: $cachu--gutter;
+
+	.cachu__container--content-fit & {
+		bottom: 0;
+	}
 }
 
 /*
@@ -142,6 +150,10 @@
  */
 .cachu__nav--right {
 	right: $cachu--gutter;
+
+	.cachu__container--content-fit & {
+		right: 0;
+	}
 
 	.cachu__nav__tooltip {
 		right: $cachu--gutter;
@@ -155,6 +167,10 @@
  */
 .cachu__nav--left {
 	left: $cachu--gutter;
+
+	.cachu__container--content-fit & {
+		left: 0;
+	}
 
 	.cachu__nav__tooltip {
 		left: $cachu--gutter;
