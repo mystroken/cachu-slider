@@ -52,9 +52,9 @@ This structure will generate, by default, a fullpage slider. If you want a conte
 ### 3. Instantiate the slider
 Before initializing the slider, make sure that the DOM Content is already loaded.
 ```javascript
-//
+
 // Now let's turn on our slider!
-//
+
 // 1. Set some options.
 // 2. Instantiate the Slider with the DOM Element instance of the wrapper.
 // 3. Run the slider !!
@@ -66,6 +66,7 @@ slider.run();
 A more complete initialization with all options set could look like this:
 ```javascript
 // Complete options.
+
 const options = {
   disableMouseEvents: false, // Disable mousewheel event listening.
   scrollingSpeed: 1000,  // The speed of the transition.
@@ -84,10 +85,10 @@ slider.run();
 * ```scrollingLoop```: *boolean* (default ```true```) Tells the slider if it has to loop the scrolling after reaching the end of sections.
 * ```navigationEnabled```: *boolean* (default ```true```) Tells the slider to display or not the navigation buttons.
 * ```navigationPosition```: *string* (default ```right```) Sets the position of the navigation (if enabled). Possible values are:
-	- ```top```: Fix navigation to the top.
-	- ```right```: Fix navigation to the right.
+	- ```top```:    Fix navigation to the top.
+	- ```right```:  Fix navigation to the right.
 	- ```bottom```: Fix navigation to the bottom.
-	- ```left```: Fix navigation to the left.
+	- ```left```:   Fix navigation to the left.
 ## Methods
 After instantiating the slider (```var slider = new Cachu(...)```), you get access to all these methods:
 ### run()
