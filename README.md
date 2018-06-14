@@ -37,7 +37,7 @@ If you plan to use the library into a webpack project, you must read our [advanc
   </div>
 
   <!-- End of section  -->
-  <!-- Navigation fill be dynamically added here (via JavaScript) -->
+  <!-- Navigation will be dynamically added here (via JavaScript) -->
 </div>
 ```
 Each section will be defined with an element containing the ```cachu__section``` class. The active section by default will be the first section.
