@@ -9,13 +9,6 @@ A standalone vanilla javascript library to create animated fullscreen or content
 <p>
 	&rarr; <a target="_blank" href="https://codepen.io/mystroken/pen/bKoebp">Simple Demo</a>
 </p>
-<p>
-	Have any suggestions or feedback?
-	<ol>
-		<li>Let's use <a target="_blank" href="https://trello.com/b/gmsaBRvO/cachu-slider">Cachu Slider on Trello</a></li>
-		<li>Reach out <a target="_blank" href="https://twitter.com/mystroken/">@mystroken</a></li>
-	</ol>
-</p>
 
 
 ## Usage
@@ -106,7 +99,15 @@ You must call this method to run the slide. Else, the content will be hidden.
 If you find a bug or have compatibility issues, please open a ticket under issues section for this repository.
 
 ## Contributing to cachu-slider
-Please see [Contributing to cachu slider](https://github.com/mystroken/cachu-slider/wiki/Contributing-to-cachu-slider).
+<p>
+	Have any suggestions or feedback?
+	<ol>
+		<li>Let's use <a target="_blank" href="https://trello.com/b/gmsaBRvO/cachu-slider">Cachu Slider on Trello</a></li>
+		<li>Reach out <a target="_blank" href="https://twitter.com/mystroken/">@mystroken</a></li>
+	</ol>
+</p>
+
+Else, please see [Contributing to cachu slider](https://github.com/mystroken/cachu-slider/wiki/Contributing-to-cachu-slider).
 
 ## License
 ```cachu-slider``` is an open sourced project using [MIT license](http://opensource.org/licenses/MIT).
