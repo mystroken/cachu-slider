@@ -4,13 +4,19 @@
 
 A standalone vanilla javascript library to create animated fullscreen or content-fit sliders on your web pages. It is inspired by the famous library [fullpage.js](https://github.com/alvarotrigo/fullpage.js/) by Alvaro Trigo.
 <p>
-The particularity of <code>cachu-slider</code> is that it's essentially based on Promises (ES6 feature), what is ideal for adding individual animations/transitions to each element of each slider section.
+	The particularity of <code>cachu-slider</code> is that it's essentially based on Promises (ES6 feature), what is ideal for adding individual animations/transitions to each element of each slider section.
 </p>
 <p>
-	&rarr; <a href="https://codepen.io/mystroken/pen/bKoebp">Simple Demo</a>
+	&rarr; <a target="_blank" href="https://codepen.io/mystroken/pen/bKoebp">Simple Demo</a>
+</p>
+<p>
+	Have any suggestions or feedback?
+	<ol>
+		<li>Let's use <a target="_blank" href="https://trello.com/b/gmsaBRvO/cachu-slider">Cachu Slider on Trello</a></li>
+		<li>Reach out <a target="_blank" href="https://twitter.com/mystroken/">@mystroken</a></li>
+	</ol>
 </p>
 
-Have any suggestions or feedback? Reach out [@mystroken](https://twitter.com/mystroken/)
 
 ## Usage
 #### 1. Including the library
@@ -80,6 +86,7 @@ slider.run();
 <p>
 <b>Notice</b>: If you don't plan to use animations or transitions on some of the elements of some of your slides, you must ask yourself if you really need to use this library. ( You could consider using <a href="https://github.com/alvarotrigo/fullpage.js/">fullpage.js</a> rather ).
 </p>
+
 ## Options
 - ```disableMouseEvents```: *boolean* (default ```false```) Disable listening mousewheel events. This feature may be interesting if you only want to scroll through navigation buttons.
 - ```scrollingSpeed```: *int* (default ```1000```) Sets the speed of the transition between sections. This value must be greather than or equal to zero (>= 0).
