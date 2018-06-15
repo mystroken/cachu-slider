@@ -6,9 +6,8 @@ A standalone vanilla javascript library to create animated fullscreen or content
 <p>
 The particularity of <code>cachu-slider</code> is that it's essentially based on Promises (ES6 feature), what is ideal for adding individual animations/transitions to each element of each slider section.
 </p>
-
 <p>
-<b>Notice</b>: If you don't plan to use animations or transitions on some of the elements of some of your slides, you must ask yourself if you really need to use this library. ( You could consider using <a href="https://github.com/alvarotrigo/fullpage.js/">fullpage.js</a> rather ).
+	&rarr; <a href="https://codepen.io/mystroken/pen/bKoebp">Simple Demo</a>
 </p>
 
 Have any suggestions or feedback? Reach out [@mystroken](https://twitter.com/mystroken/)
@@ -78,7 +77,9 @@ const options = {
 let slider = new Cachu(document.querySelector('.cachu__container'), options);
 slider.run();
 ```
-
+<p>
+<b>Notice</b>: If you don't plan to use animations or transitions on some of the elements of some of your slides, you must ask yourself if you really need to use this library. ( You could consider using <a href="https://github.com/alvarotrigo/fullpage.js/">fullpage.js</a> rather ).
+</p>
 ## Options
 - ```disableMouseEvents```: *boolean* (default ```false```) Disable listening mousewheel events. This feature may be interesting if you only want to scroll through navigation buttons.
 - ```scrollingSpeed```: *int* (default ```1000```) Sets the speed of the transition between sections. This value must be greather than or equal to zero (>= 0).
