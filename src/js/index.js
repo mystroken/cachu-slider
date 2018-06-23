@@ -100,11 +100,13 @@ export default class Cachu {
 			// Set mode
 			this.state.mode = this._detectMode();
 
-			this.elements.sections.forEach(element => {
+			for(let i = 0; i < this.elements.sections.length; i++) {
+				let element = this.elements.sections[i];
+
 				let navigationItem = new CachuNavigationItem();
 				this.navigation.navigationList.add(navigationItem);
 				this.slideList.push(new CachuSlide(element, this, navigationItem));
-			});
+			}
 
 			this.currentSlideItem = this.slideList.head;
 
@@ -312,6 +314,10 @@ export default class Cachu {
 
 		// Fix the height of each section.
 		setSectionsHeight(this.elements.sections, this.state.wrapperHeight);
+
+		window.addEventListener('resize', (e) => {
+			this._hydrateSlider();
+		});
 	}
 
 	_dehydrateSlider() {

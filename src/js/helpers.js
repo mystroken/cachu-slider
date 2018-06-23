@@ -42,27 +42,29 @@ export function whichAnimationEvent(){
 
 /**
  *
- * @param { HTMLAllCollection } sections
+ * @param {NodeList} sections
  */
 export function getSectionsMaxHeight(sections) {
 	let maxHeight = 0;
 
-	sections.forEach(section => {
+	for(let i = 0; i < sections.length; i++) {
+		let section = sections[i];
 		const height = getOuterHeight(section);
 		if ( height > maxHeight ) maxHeight = height;
-	});
+	}
 
 	return maxHeight;
 }
 
 /**
- * @param {HTMLAllCollection} sections
+ * @param {NodeList} sections
  * @param {int} height
  */
 export const setSectionsHeight = (sections, height) => {
-	sections.forEach(section => {
+	for(let i = 0; i < sections.length; i++) {
+		let section = sections[i];
 		section.style.height = height + "px";
-	});
+	}
 }
 
 /**

@@ -1,5 +1,5 @@
 /*!
- * Cachu Slider v0.5.0
+ * Cachu Slider v0.5.1
  * Copyright (c) 2018 Mystro Ken <mystroken@gmail.com>
  * MIT License
  */
@@ -62,6 +62,7 @@
   transition-duration: 100ms;
   transition-timing-function: ease-in-out;
   background-color: #ffffff;
+  color: currentColor;
   border-radius: 50%;
   text-decoration: none;
   cursor: pointer;

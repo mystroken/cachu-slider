@@ -42,9 +42,15 @@
 	transition-timing-function: ease-in-out;
 
 	background-color: $cachu__nav--color;
+	color: currentColor;
 	border-radius: 50%;
 	text-decoration: none;
 	cursor: pointer;
+
+	&:hover,
+	&:active {
+		color: currentColor;
+	}
 
 	.active & {
 		transform: scale(1);

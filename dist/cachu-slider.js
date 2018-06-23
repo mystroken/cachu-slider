@@ -1,5 +1,5 @@
 /*!
- * Cachu Slider v0.5.0
+ * Cachu Slider v0.5.1
  * Copyright (c) 2018 Mystro Ken <mystroken@gmail.com>
  * MIT License
  */
@@ -4337,6 +4337,8 @@ var Cachu = function () {
 	}, {
 		key: "_hydrateSlider",
 		value: function _hydrateSlider() {
+			var _this7 = this;
+
 			// First, we should find an apropriate
 			// height for the wrapper.
 			// Then we'll force each section to fit that height.
@@ -4351,6 +4353,10 @@ var Cachu = function () {
 
 			// Fix the height of each section.
 			(0, _helpers.setSectionsHeight)(this.elements.sections, this.state.wrapperHeight);
+
+			window.addEventListener('resize', function (e) {
+				_this7._hydrateSlider();
+			});
 		}
 	}, {
 		key: "_dehydrateSlider",
