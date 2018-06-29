@@ -68,6 +68,17 @@ export const setSectionsHeight = (sections, height) => {
 }
 
 /**
+ * @param {NodeList} sections
+ * @param {int} width
+ */
+export const setSectionsWidth = (sections, width) => {
+	for(let i = 0; i < sections.length; i++) {
+		let section = sections[i];
+		section.style.width = width + "px";
+	}
+}
+
+/**
  * Adds a classname to an element.
  *
  * @param {HTMLElement} el
@@ -76,6 +87,7 @@ export const setSectionsHeight = (sections, height) => {
 export function addClass(el, className) {
 	if (el.classList) el.classList.add(className);
 	else el.className += ' ' + className;
+	return el;
 }
 
 /**
@@ -88,6 +100,7 @@ export const removeClass = (el, className) => {
 	//console.log(el);
 	if (el.classList) el.classList.remove(className);
 	else el.className = el.className.replace(new RegExp('(^|\\b)' + className.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
+	return el;
 }
 
 /**
@@ -105,8 +118,19 @@ export const hasClass = (el, className) => (el.classList) ? el.classList.contain
  */
 export const getOuterHeight = el => {
   let height = el.offsetHeight;
-  const style = getComputedStyle(el);
+	const style = getComputedStyle(el);
 
-  height += parseInt(style.marginTop) + parseInt(style.marginBottom);
+	height += parseInt(style.marginTop) + parseInt(style.marginBottom);
   return height;
+}
+
+/**
+ * @param {DOMElement} el
+ */
+export const getOuterWidth = el => {
+	let width = el.offsetWidth;
+	const style = getComputedStyle(el);
+
+	width += parseInt(style.marginLeft) + parseInt(style.marginRight);
+	return width;
 }

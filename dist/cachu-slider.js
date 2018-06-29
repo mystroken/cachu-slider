@@ -1,5 +1,5 @@
 /*!
- * Cachu Slider v0.5.1
+ * Cachu Slider v0.6.0
  * Copyright (c) 2018 Mystro Ken <mystroken@gmail.com>
  * MIT License
  */
@@ -335,27 +335,40 @@ function whichAnimationEvent() {
 
 /**
  *
- * @param { HTMLAllCollection } sections
+ * @param {NodeList} sections
  */
 function getSectionsMaxHeight(sections) {
   var maxHeight = 0;
 
-  sections.forEach(function (section) {
+  for (var i = 0; i < sections.length; i++) {
+    var section = sections[i];
     var height = getOuterHeight(section);
     if (height > maxHeight) maxHeight = height;
-  });
+  }
 
   return maxHeight;
 }
 
 /**
- * @param {HTMLAllCollection} sections
+ * @param {NodeList} sections
  * @param {int} height
  */
 var setSectionsHeight = exports.setSectionsHeight = function setSectionsHeight(sections, height) {
-  sections.forEach(function (section) {
+  for (var i = 0; i < sections.length; i++) {
+    var section = sections[i];
     section.style.height = height + "px";
-  });
+  }
+};
+
+/**
+ * @param {NodeList} sections
+ * @param {int} width
+ */
+var setSectionsWidth = exports.setSectionsWidth = function setSectionsWidth(sections, width) {
+  for (var i = 0; i < sections.length; i++) {
+    var section = sections[i];
+    section.style.width = width + "px";
+  }
 };
 
 /**
@@ -366,6 +379,7 @@ var setSectionsHeight = exports.setSectionsHeight = function setSectionsHeight(s
  */
 function addClass(el, className) {
   if (el.classList) el.classList.add(className);else el.className += ' ' + className;
+  return el;
 }
 
 /**
@@ -377,6 +391,7 @@ function addClass(el, className) {
 var removeClass = exports.removeClass = function removeClass(el, className) {
   //console.log(el);
   if (el.classList) el.classList.remove(className);else el.className = el.className.replace(new RegExp('(^|\\b)' + className.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
+  return el;
 };
 
 /**
@@ -400,6 +415,17 @@ var getOuterHeight = exports.getOuterHeight = function getOuterHeight(el) {
 
   height += parseInt(style.marginTop) + parseInt(style.marginBottom);
   return height;
+};
+
+/**
+ * @param {DOMElement} el
+ */
+var getOuterWidth = exports.getOuterWidth = function getOuterWidth(el) {
+  var width = el.offsetWidth;
+  var style = getComputedStyle(el);
+
+  width += parseInt(style.marginLeft) + parseInt(style.marginRight);
+  return width;
 };
 
 /***/ }),
@@ -1230,9 +1256,8 @@ var CachuSlide = function () {
 					}, false);
 				}
 
-				// Scroll the container to the correct viewport.
-				var translateY = -1 * _this.slider.state.wrapperHeight * (_this.index - 1);
-				_this.slider.elements.container.style.transform = "translate3d(0," + translateY + "px,0)";
+				// Slide the container to the correct viewport.
+				_this.slider.slideContainer(_this.index);
 
 				// If the scrolling speed is not
 				// greater than zero, resolve immediatly.
@@ -4023,6 +4048,7 @@ var defaultOptions = {
 	disableMouseEvents: false, // Disable mousewheel event listening.
 	scrollingSpeed: 1000, // The speed of the transition.
 	scrollingLoop: true, // Loop after reaching the end.
+	scrollingDirection: 'vertical', // Loop after reaching the end.
 	navigationEnabled: true, // Enable navigation buttons
 	navigationPosition: 'right' // The Navigation's position
 };
@@ -4044,7 +4070,8 @@ var Cachu = function () {
 			isPaused: true,
 			isRunning: false,
 			isScrolling: false,
-			wrapperHeight: 0
+			wrapperHeight: 0,
+			wrapperWidth: 0
 		};
 
 		/**
@@ -4103,18 +4130,19 @@ var Cachu = function () {
 	_createClass(Cachu, [{
 		key: "initialize",
 		value: function initialize() {
-			var _this = this;
 
 			if (false === this.state.isInitialized) {
 
 				// Set mode
 				this.state.mode = this._detectMode();
 
-				this.elements.sections.forEach(function (element) {
+				for (var i = 0; i < this.elements.sections.length; i++) {
+					var element = this.elements.sections[i];
+
 					var navigationItem = new _cachuNavigationItem2.default();
-					_this.navigation.navigationList.add(navigationItem);
-					_this.slideList.push(new _slide2.default(element, _this, navigationItem));
-				});
+					this.navigation.navigationList.add(navigationItem);
+					this.slideList.push(new _slide2.default(element, this, navigationItem));
+				}
 
 				this.currentSlideItem = this.slideList.head;
 
@@ -4131,13 +4159,13 @@ var Cachu = function () {
 	}, {
 		key: "render",
 		value: function render() {
-			var _this2 = this;
+			var _this = this;
 
 			if (false === this.state.isRendered) {
 				var promise = this.events.before.render.trigger().then(function () {
-					return _this2._render();
+					return _this._render();
 				}).then(function () {
-					return _this2.events.after.render.trigger();
+					return _this.events.after.render.trigger();
 				});
 				return promise;
 			}
@@ -4152,28 +4180,28 @@ var Cachu = function () {
 	}, {
 		key: "_render",
 		value: function _render() {
-			var _this3 = this;
+			var _this2 = this;
 
 			return new _promise2.default(function (resolve, reject) {
 
 				// Hydrate the slider wrapper.
-				_this3._hydrateSlider();
+				_this2._hydrateSlider();
 
-				_this3.elements.container.style.webkitTransition = "-webkit-transform " + _this3.options.scrollingSpeed + "ms cubic-bezier(.56,.12,.12,.98)";
-				_this3.elements.container.style.msTransition = "-ms-transform " + _this3.options.scrollingSpeed + "ms cubic-bezier(.56,.12,.12,.98)";
-				_this3.elements.container.style.transition = "transform " + _this3.options.scrollingSpeed + "ms cubic-bezier(.56,.12,.12,.98)";
+				_this2.elements.container.style.webkitTransition = "-webkit-transform " + _this2.options.scrollingSpeed + "ms cubic-bezier(.56,.12,.12,.98)";
+				_this2.elements.container.style.msTransition = "-ms-transform " + _this2.options.scrollingSpeed + "ms cubic-bezier(.56,.12,.12,.98)";
+				_this2.elements.container.style.transition = "transform " + _this2.options.scrollingSpeed + "ms cubic-bezier(.56,.12,.12,.98)";
 
 				// Attach events.
-				if (false === _this3.options.disableMouseEvents) {
-					var hamster = (0, _hamsterjs2.default)(_this3.elements.container);
+				if (false === _this2.options.disableMouseEvents) {
+					var hamster = (0, _hamsterjs2.default)(_this2.elements.container);
 					var onMouseWheelDebounced = debounce(function (event, delta) {
-						return _this3._onMouseWheel(delta);
+						return _this2._onMouseWheel(delta);
 					}, 0, { "maxWait": 1000 });
 					hamster.wheel(onMouseWheelDebounced);
 				}
 
 				// Hook navigation actions.
-				var cachuSlideListItem = _this3.slideList.head;
+				var cachuSlideListItem = _this2.slideList.head;
 
 				var _loop = function _loop() {
 					var slideListItem = cachuSlideListItem;
@@ -4184,7 +4212,7 @@ var Cachu = function () {
 					slideNavigationItemAnchor.addEventListener('click', function (event) {
 						event.preventDefault();
 						//slideNavigationItem.activate();
-						_this3._scrollTo(slideListItem);
+						_this2._scrollTo(slideListItem);
 						return false;
 					});
 
@@ -4196,12 +4224,12 @@ var Cachu = function () {
 				}
 
 				// Render the navigation
-				if (true === _this3.options.navigationEnabled) _this3.navigation.render(_this3.elements.wrapper, _this3.options.navigationPosition);
+				if (true === _this2.options.navigationEnabled) _this2.navigation.render(_this2.elements.wrapper, _this2.options.navigationPosition);
 
-				_this3.elements.container.style.visibility = "visible";
+				_this2.elements.container.style.visibility = "visible";
 
-				_this3.state.isRendered = true;
-				resolve(_this3);
+				_this2.state.isRendered = true;
+				resolve(_this2);
 			});
 		}
 	}, {
@@ -4221,12 +4249,12 @@ var Cachu = function () {
 	}, {
 		key: "run",
 		value: function run() {
-			var _this4 = this;
+			var _this3 = this;
 
 			if (false === this.state.isRunning) {
 				// Render first the slider.
 				var promise = this.render().then(function () {
-					return _this4._run();
+					return _this3._run();
 				});
 				return promise;
 			}
@@ -4240,13 +4268,13 @@ var Cachu = function () {
 	}, {
 		key: "_run",
 		value: function _run() {
-			var _this5 = this;
+			var _this4 = this;
 
 			return new _promise2.default(function (resolve, reject) {
 
 				// Run the slider.
-				_this5.currentSlideItem.enter().then(function () {
-					_this5.state.isRunning = true;
+				_this4.currentSlideItem.enter().then(function () {
+					_this4.state.isRunning = true;
 					resolve();
 				});
 			});
@@ -4314,7 +4342,7 @@ var Cachu = function () {
 	}, {
 		key: "_scroll",
 		value: function _scroll(from, to) {
-			var _this6 = this;
+			var _this5 = this;
 
 			if (false === this.state.isScrolling && from && to) {
 
@@ -4327,8 +4355,8 @@ var Cachu = function () {
 					return to.enter();
 				}).then(function () {
 					//console.info(`Slide ${to.index} entered!`);
-					_this6.currentSlideItem = to;
-					_this6.state.isScrolling = false;
+					_this5.currentSlideItem = to;
+					_this5.state.isScrolling = false;
 				});
 				return promise;
 			}
@@ -4337,12 +4365,14 @@ var Cachu = function () {
 	}, {
 		key: "_hydrateSlider",
 		value: function _hydrateSlider() {
-			var _this7 = this;
+			var _this6 = this;
 
 			// First, we should find an apropriate
 			// height for the wrapper.
 			// Then we'll force each section to fit that height.
 
+			// Get the wrapper width.
+			this.state.wrapperWidth = (0, _helpers.getOuterWidth)(this.elements.container);
 
 			// Get the apropriate height of the wrapper.
 			this.state.wrapperHeight = _helpers.CACHU_MODE_CONTENT_FIT === this.state.mode ? (0, _helpers.getSectionsMaxHeight)(this.elements.sections) : (0, _helpers.getOuterHeight)(this.elements.wrapper);
@@ -4351,11 +4381,19 @@ var Cachu = function () {
 			this.elements.wrapper.style.height = this.state.wrapperHeight + "px";
 			this.elements.wrapper.style.overflow = "hidden";
 
-			// Fix the height of each section.
+			// Fix the height and the width of each section.
 			(0, _helpers.setSectionsHeight)(this.elements.sections, this.state.wrapperHeight);
+			(0, _helpers.setSectionsWidth)(this.elements.sections, this.state.wrapperWidth);
+
+			// Set the scrolling direction
+			if (this.options.scrollingDirection === 'vertical') {
+				(0, _helpers.removeClass)(this.elements.container, 'cachu__sections--horizontal');
+			} else if (this.options.scrollingDirection === 'horizontal') {
+				(0, _helpers.addClass)(this.elements.container, 'cachu__sections--horizontal');
+			}
 
 			window.addEventListener('resize', function (e) {
-				_this7._hydrateSlider();
+				_this6._hydrateSlider();
 			});
 		}
 	}, {
@@ -4371,6 +4409,23 @@ var Cachu = function () {
 		key: "_detectMode",
 		value: function _detectMode() {
 			return true === (0, _helpers.hasClass)(this.elements.wrapper, "cachu__container--content-fit") ? _helpers.CACHU_MODE_CONTENT_FIT : _helpers.CACHU_MODE_FULL_PAGE;
+		}
+	}, {
+		key: "slideContainer",
+		value: function slideContainer() {
+			var index = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+
+
+			var translateX = 0;
+			var translateY = 0;
+
+			if (this.options.scrollingDirection === 'vertical') {
+				translateY = -1 * this.state.wrapperHeight * (index - 1);
+			} else if (this.options.scrollingDirection === 'horizontal') {
+				translateX = -1 * this.state.wrapperWidth * (index - 1);
+			}
+
+			this.elements.container.style.transform = "translate3d(" + translateX + "px," + translateY + "px,0px)";
 		}
 	}, {
 		key: "destroy",

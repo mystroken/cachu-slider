@@ -1,5 +1,5 @@
 /*!
- * Cachu Slider v0.5.1
+ * Cachu Slider v0.6.0
  * Copyright (c) 2018 Mystro Ken <mystroken@gmail.com>
  * MIT License
  */
@@ -16,8 +16,13 @@
   flex-direction: column;
 }
 
+.cachu__sections--horizontal {
+  flex-direction: row;
+}
+
 .cachu__section {
   position: relative;
+  flex-shrink: 0;
   height: 100%;
   width: 100%;
 }
@@ -66,6 +71,10 @@
   border-radius: 50%;
   text-decoration: none;
   cursor: pointer;
+}
+
+.cachu__nav__button:hover, .cachu__nav__button:active {
+  color: currentColor;
 }
 
 .active .cachu__nav__button {

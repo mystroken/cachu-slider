@@ -78,9 +78,8 @@ export default class CachuSlide {
 				}, false);
 			}
 
-			// Scroll the container to the correct viewport.
-			const translateY = (-1 * this.slider.state.wrapperHeight) * (this.index - 1);
-			this.slider.elements.container.style.transform = "translate3d(0,"+translateY+"px,0)";
+			// Slide the container to the correct viewport.
+			this.slider.slideContainer( this.index );
 
 			// If the scrolling speed is not
 			// greater than zero, resolve immediatly.

@@ -12,14 +12,19 @@ import {
 	hasClass,
 	getOuterHeight,
 	getSectionsMaxHeight,
-	setSectionsHeight
+	setSectionsHeight,
+	getOuterWidth,
+	setSectionsWidth,
+	removeClass,
+	addClass
 } from "./helpers";
 
 
 const defaultOptions = {
   disableMouseEvents: false, // Disable mousewheel event listening.
 	scrollingSpeed: 1000,  // The speed of the transition.
-  scrollingLoop: true,  // Loop after reaching the end.
+	scrollingLoop: true,  // Loop after reaching the end.
+	scrollingDirection: 'vertical',  // Loop after reaching the end.
   navigationEnabled: true, // Enable navigation buttons
   navigationPosition: 'right'  // The Navigation's position
 };
@@ -39,7 +44,8 @@ export default class Cachu {
 			isPaused: true,
 			isRunning: false,
 			isScrolling: false,
-			wrapperHeight: 0
+			wrapperHeight: 0,
+			wrapperWidth: 0
 		};
 
 		/**
@@ -301,6 +307,8 @@ export default class Cachu {
 		// height for the wrapper.
 		// Then we'll force each section to fit that height.
 
+		// Get the wrapper width.
+		this.state.wrapperWidth = getOuterWidth( this.elements.container );
 
 		// Get the apropriate height of the wrapper.
 		this.state.wrapperHeight = ( CACHU_MODE_CONTENT_FIT === this.state.mode )
@@ -312,8 +320,16 @@ export default class Cachu {
 		this.elements.wrapper.style.height = this.state.wrapperHeight + "px";
 		this.elements.wrapper.style.overflow = "hidden";
 
-		// Fix the height of each section.
-		setSectionsHeight(this.elements.sections, this.state.wrapperHeight);
+		// Fix the height and the width of each section.
+		setSectionsHeight( this.elements.sections, this.state.wrapperHeight );
+		setSectionsWidth( this.elements.sections, this.state.wrapperWidth );
+
+		// Set the scrolling direction
+		if ( this.options.scrollingDirection === 'vertical' ) {
+			removeClass( this.elements.container, 'cachu__sections--horizontal' );
+		} else if ( this.options.scrollingDirection === 'horizontal' ) {
+			addClass( this.elements.container, 'cachu__sections--horizontal' );
+		}
 
 		window.addEventListener('resize', (e) => {
 			this._hydrateSlider();
@@ -333,6 +349,21 @@ export default class Cachu {
 			? CACHU_MODE_CONTENT_FIT
 			: CACHU_MODE_FULL_PAGE
 		;
+	}
+
+	slideContainer( index = 1 ) {
+
+		let translateX = 0;
+		let translateY = 0;
+
+		if ( this.options.scrollingDirection === 'vertical' ) {
+			translateY = (-1 * this.state.wrapperHeight) * (index - 1);
+		}
+		else if ( this.options.scrollingDirection === 'horizontal' ) {
+			translateX = (-1 * this.state.wrapperWidth) * (index - 1);
+		}
+
+		this.elements.container.style.transform = "translate3d("+translateX+"px,"+translateY+"px,0px)";
 	}
 
 	destroy() {

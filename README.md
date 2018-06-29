@@ -81,9 +81,12 @@ slider.run();
 </p>
 
 ## Options
-- ```disableMouseEvents```: *boolean* (default ```false```) Disable listening mousewheel events. This feature may be interesting if you only want to scroll through navigation buttons.
-- ```scrollingSpeed```: *int* (default ```1000```) Sets the speed of the transition between sections. This value must be greather than or equal to zero (>= 0).
+* ```disableMouseEvents```: *boolean* (default ```false```) Disable listening mousewheel events. This feature may be interesting if you only want to scroll through navigation buttons.
+* ```scrollingSpeed```: *int* (default ```1000```) Sets the speed of the transition between sections. This value must be greather than or equal to zero (>= 0).
 * ```scrollingLoop```: *boolean* (default ```true```) Tells the slider if it has to loop the scrolling after reaching the end of sections.
+* ```scrollingDirection```: *string* (default ```vertical```) The scrolling direction. Possible values are:
+    - ```vertical```
+    - ```horizontal```
 * ```navigationEnabled```: *boolean* (default ```true```) Tells the slider to display or not the navigation buttons.
 * ```navigationPosition```: *string* (default ```right```) Sets the position of the navigation (if enabled). Possible values are:
 	- ```top```:    Fix navigation to the top.
