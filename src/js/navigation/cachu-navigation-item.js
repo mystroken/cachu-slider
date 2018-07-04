@@ -41,8 +41,8 @@ export default class CachuNavigationItem {
 		// Initalizes the list item element.
 		addClass(this.elements.container, "cachu__nav__item");
 		// Append tooltip if it exists.
-		//this.elements.container.appendChild(this.elements.tooltip);
-		this.elements.container.appendChild(this.elements.anchor);
+		this.elements.container.appendChild( this.elements.tooltip );
+		this.elements.container.appendChild( this.elements.anchor );
 	}
 
 	/**
@@ -50,6 +50,15 @@ export default class CachuNavigationItem {
 	 */
 	getNodeElement() {
 		return this.elements.container;
+	}
+
+	/**
+	 * Adds a text to the tooltip.
+	 *
+	 * @param {string} text
+	 */
+	setTooltip(text) {
+		this.elements.tooltip.innerText = text;
 	}
 
 	activate() {

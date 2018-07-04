@@ -80,6 +80,11 @@
 			opacity: 1;
 			width: auto;
 		}
+
+		.dismissed & {
+			opacity: 0;
+			width: 0;
+		}
 	}
 
 /*

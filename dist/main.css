@@ -1,5 +1,5 @@
 /*!
- * Cachu Slider v0.6.0
+ * Cachu Slider v0.7.0
  * Copyright (c) 2018 Mystro Ken <mystroken@gmail.com>
  * MIT License
  */
@@ -87,7 +87,7 @@
   top: 50%;
   right: 1.5rem;
   right: calc(2.5rem);
-  color: #ffffff;
+  color: currentColor;
   font-size: 14px;
   font-family: inherit;
   white-space: nowrap;
@@ -104,6 +104,11 @@
 .active .cachu__nav__tooltip {
   opacity: 1;
   width: auto;
+}
+
+.dismissed .cachu__nav__tooltip {
+  opacity: 0;
+  width: 0;
 }
 
 /*

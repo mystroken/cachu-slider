@@ -125,7 +125,7 @@ export const getOuterHeight = el => {
 }
 
 /**
- * @param {DOMElement} el
+ * @param {HTMLElement} el
  */
 export const getOuterWidth = el => {
 	let width = el.offsetWidth;

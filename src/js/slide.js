@@ -102,5 +102,6 @@ export default class CachuSlide {
 		//removeClass(this.elements.section, "active");
 	}
 
-	_initialize() {}
+	_initialize() {
+	}
 }

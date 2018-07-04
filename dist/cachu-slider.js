@@ -1,5 +1,5 @@
 /*!
- * Cachu Slider v0.6.0
+ * Cachu Slider v0.7.0
  * Copyright (c) 2018 Mystro Ken <mystroken@gmail.com>
  * MIT License
  */
@@ -418,7 +418,7 @@ var getOuterHeight = exports.getOuterHeight = function getOuterHeight(el) {
 };
 
 /**
- * @param {DOMElement} el
+ * @param {HTMLElement} el
  */
 var getOuterWidth = exports.getOuterWidth = function getOuterWidth(el) {
   var width = el.offsetWidth;
@@ -863,7 +863,7 @@ var CachuNavigationItem = function () {
 			// Initalizes the list item element.
 			(0, _helpers.addClass)(this.elements.container, "cachu__nav__item");
 			// Append tooltip if it exists.
-			//this.elements.container.appendChild(this.elements.tooltip);
+			this.elements.container.appendChild(this.elements.tooltip);
 			this.elements.container.appendChild(this.elements.anchor);
 		}
 
@@ -875,6 +875,18 @@ var CachuNavigationItem = function () {
 		key: "getNodeElement",
 		value: function getNodeElement() {
 			return this.elements.container;
+		}
+
+		/**
+   * Adds a text to the tooltip.
+   *
+   * @param {string} text
+   */
+
+	}, {
+		key: "setTooltip",
+		value: function setTooltip(text) {
+			this.elements.tooltip.innerText = text;
 		}
 	}, {
 		key: "activate",
@@ -2581,7 +2593,23 @@ var CachuNavigationList = function () {
 			(0, _helpers.addClass)(this.elements.container, "cachu__nav__items");
 
 			this.items.forEach(function (item) {
+
 				_this.elements.container.appendChild(item.elements.container);
+
+				item.elements.container.addEventListener('mouseover', function (e) {
+					_this.items.forEach(function (el) {
+						return (0, _helpers.addClass)(el.elements.container, 'dismissed');
+					});
+					(0, _helpers.removeClass)(item.elements.container, 'dismissed');
+					(0, _helpers.addClass)(item.elements.container, 'mouseover');
+				});
+
+				item.elements.container.addEventListener('mouseout', function (e) {
+					_this.items.forEach(function (el) {
+						return (0, _helpers.removeClass)(el.elements.container, 'dismissed');
+					});
+					(0, _helpers.removeClass)(item.elements.container, 'mouseover');
+				});
 			});
 
 			return this.elements.container;

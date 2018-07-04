@@ -1,5 +1,5 @@
 import CachuNavigationItem from "./cachu-navigation-item";
-import { addClass } from "../helpers";
+import { addClass, removeClass } from "../helpers";
 
 export default class CachuNavigationList {
 	constructor() {
@@ -49,7 +49,19 @@ export default class CachuNavigationList {
 		addClass(this.elements.container, "cachu__nav__items");
 
 		this.items.forEach((item) => {
+
 			this.elements.container.appendChild(item.elements.container);
+
+			item.elements.container.addEventListener('mouseover', (e) => {
+				this.items.forEach( el => addClass(el.elements.container, 'dismissed') );
+				removeClass(item.elements.container, 'dismissed');
+				addClass(item.elements.container, 'mouseover');
+			});
+
+			item.elements.container.addEventListener('mouseout', e => {
+				this.items.forEach( el => removeClass(el.elements.container, 'dismissed') );
+				removeClass(item.elements.container, 'mouseover');
+			});
 		});
 
 		return this.elements.container;
