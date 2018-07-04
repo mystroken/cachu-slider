@@ -155,11 +155,6 @@
   margin-left: 0.5rem;
 }
 
-.cachu__nav--top .cachu__nav__tooltip,
-.cachu__nav--bottom .cachu__nav__tooltip {
-  display: none;
-}
-
 /*
  * Specific to Top Navigation.
  */

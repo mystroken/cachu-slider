@@ -2605,10 +2605,10 @@ var CachuNavigationList = function () {
 				});
 
 				item.elements.container.addEventListener('mouseout', function (e) {
+					(0, _helpers.removeClass)(item.elements.container, 'mouseover');
 					_this.items.forEach(function (el) {
 						return (0, _helpers.removeClass)(el.elements.container, 'dismissed');
 					});
-					(0, _helpers.removeClass)(item.elements.container, 'mouseover');
 				});
 			});
 

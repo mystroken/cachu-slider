@@ -53,14 +53,14 @@ export default class CachuNavigationList {
 			this.elements.container.appendChild(item.elements.container);
 
 			item.elements.container.addEventListener('mouseover', (e) => {
-				this.items.forEach( el => addClass(el.elements.container, 'dismissed') );
-				removeClass(item.elements.container, 'dismissed');
-				addClass(item.elements.container, 'mouseover');
+				this.items.forEach( el => addClass( el.elements.container, 'dismissed' ) );
+				removeClass( item.elements.container, 'dismissed' );
+				addClass( item.elements.container, 'mouseover' );
 			});
 
-			item.elements.container.addEventListener('mouseout', e => {
-				this.items.forEach( el => removeClass(el.elements.container, 'dismissed') );
-				removeClass(item.elements.container, 'mouseover');
+			item.elements.container.addEventListener( 'mouseout', e => {
+				removeClass( item.elements.container, 'mouseover' );
+				this.items.forEach( el => removeClass( el.elements.container, 'dismissed' ) );
 			});
 		});
 
