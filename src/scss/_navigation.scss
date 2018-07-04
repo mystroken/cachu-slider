@@ -127,6 +127,11 @@
 			margin-left: $cachu--gutter/3;
 		}
 	}
+
+	.cachu__nav__tooltip {
+		right: auto;
+		transform: none;
+	}
 }
 
 /*
@@ -137,6 +142,10 @@
 
 	.cachu__container--content-fit & {
 		top: 0;
+	}
+
+	.cachu__nav__tooltip {
+		top: -1.5rem;
 	}
 }
 
@@ -149,6 +158,11 @@
 
 	.cachu__container--content-fit & {
 		bottom: 0;
+	}
+
+	.cachu__nav__tooltip {
+		top: auto;
+		bottom: -1.5rem;
 	}
 }
 
