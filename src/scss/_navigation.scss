@@ -68,13 +68,18 @@
 		font-family: inherit;
 		white-space: nowrap;
 		width: 0;
-		max-width: 220px;
-		overflow: hidden;
+		//max-width: 220px;
+		//overflow: hidden;
 		display: block;
 		opacity: 0;
 		cursor: pointer;
 		transform: translate3d(0,-50%,0);
-		transition: all 250ms ease-in-out;
+		transform-style: preserve-3d;
+		transition-property: width, height, opacity;
+		transition-duration: 250ms;
+		transition-timing-function: ease-in-out;
+		filter: blur(0);
+		visibility: visible;
 
 		.active & {
 			opacity: 1;
@@ -82,8 +87,7 @@
 		}
 
 		.dismissed & {
-			opacity: 0;
-			width: 0;
+			visibility: hidden;
 		}
 	}
 
@@ -131,6 +135,9 @@
 	.cachu__nav__tooltip {
 		right: auto;
 		transform: none;
+		transition-duration: 0ms;
+
+		.dismissed & {}
 	}
 }
 

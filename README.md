@@ -87,6 +87,7 @@ slider.run();
 * ```scrollingDirection```: *string* (default ```vertical```) The scrolling direction. Possible values are:
     - ```vertical```
     - ```horizontal```
+* ```fixSectionsHeight```: *boolean* (default ```true```) Tells the slider to set or not a same height to all sections. Only if the scrolling direction is ```horizontal```, else this parameter is ignored.
 * ```navigationEnabled```: *boolean* (default ```true```) Tells the slider to display or not the navigation buttons.
 * ```navigationPosition```: *string* (default ```right```) Sets the position of the navigation (if enabled). Possible values are:
 	- ```top```:    Fix navigation to the top.

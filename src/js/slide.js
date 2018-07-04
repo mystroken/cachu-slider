@@ -79,7 +79,7 @@ export default class CachuSlide {
 			}
 
 			// Slide the container to the correct viewport.
-			this.slider.slideContainer( this.index );
+			this.slider.slideContainer( this.elements.section, this.index );
 
 			// If the scrolling speed is not
 			// greater than zero, resolve immediatly.

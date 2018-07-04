@@ -16,7 +16,8 @@ import {
 	getOuterWidth,
 	setSectionsWidth,
 	removeClass,
-	addClass
+	addClass,
+	optimizedResize
 } from "./helpers";
 
 
@@ -25,6 +26,7 @@ const defaultOptions = {
 	scrollingSpeed: 1000,  // The speed of the transition.
 	scrollingLoop: true,  // Loop after reaching the end.
 	scrollingDirection: 'vertical',  // Loop after reaching the end.
+	fixSectionsHeight: true, // Sets or not a same height to all sections.
   navigationEnabled: true, // Enable navigation buttons
   navigationPosition: 'right'  // The Navigation's position
 };
@@ -160,6 +162,10 @@ export default class Cachu {
 				const onMouseWheelDebounced = debounce((event, delta) => this._onMouseWheel(delta), 0, { "maxWait": 1000 });
 				hamster.wheel(onMouseWheelDebounced);
 			}
+
+			optimizedResize.add( () => {
+				console.log(`I need to re-arrange the slider.`);
+			});
 
 			// Hook navigation actions.
 			var cachuSlideListItem = this.slideList.head;
@@ -303,6 +309,18 @@ export default class Cachu {
 	}
 
 	_hydrateSlider() {
+
+		this._positionateOnViewport();
+
+		// Set the scrolling direction
+		if ( this.options.scrollingDirection === 'vertical' ) {
+			removeClass( this.elements.container, 'cachu__sections--horizontal' );
+		} else if ( this.options.scrollingDirection === 'horizontal' ) {
+			addClass( this.elements.container, 'cachu__sections--horizontal' );
+		}
+	}
+
+	_positionateOnViewport() {
 		// First, we should find an apropriate
 		// height for the wrapper.
 		// Then we'll force each section to fit that height.
@@ -316,24 +334,35 @@ export default class Cachu {
 			: getOuterHeight(this.elements.wrapper)
 		;
 
-		// Fix the wrapper height and hide overflow.
-		this.elements.wrapper.style.height = this.state.wrapperHeight + "px";
-		this.elements.wrapper.style.overflow = "hidden";
-
-		// Fix the height and the width of each section.
-		setSectionsHeight( this.elements.sections, this.state.wrapperHeight );
-		setSectionsWidth( this.elements.sections, this.state.wrapperWidth );
-
-		// Set the scrolling direction
+		/*
+		|------------------------------
+		| Vertical scrolling
+		|------------------------------
+		*/
 		if ( this.options.scrollingDirection === 'vertical' ) {
-			removeClass( this.elements.container, 'cachu__sections--horizontal' );
-		} else if ( this.options.scrollingDirection === 'horizontal' ) {
-			addClass( this.elements.container, 'cachu__sections--horizontal' );
+			this.elements.wrapper.style.overflowY = "hidden";
+
+			// Fix the height and the width of each section.
+			setSectionsHeight( this.elements.sections, this.state.wrapperHeight );
+			setSectionsWidth( this.elements.sections, this.state.wrapperWidth );
+		}
+		/*
+		|------------------------------
+		| Horizontal scrolling
+		|------------------------------
+		*/
+		else if ( this.options.scrollingDirection === 'horizontal' ) {
+			this.elements.wrapper.style.overflowX = "hidden";
+
+			// Fix the wrapper height and hide overflow.
+			if ( true === this.options.fixSectionsHeight ) this.elements.wrapper.style.height = this.state.wrapperHeight + "px";
+
+			// Fix the height and the width of each section.
+			if ( true === this.options.fixSectionsHeight ) setSectionsHeight( this.elements.sections, this.state.wrapperHeight );
+			setSectionsWidth( this.elements.sections, this.state.wrapperWidth );
 		}
 
-		window.addEventListener('resize', (e) => {
-			this._hydrateSlider();
-		});
+		this.elements.wrapper.style.overflow = "hidden";
 	}
 
 	_dehydrateSlider() {
@@ -351,7 +380,7 @@ export default class Cachu {
 		;
 	}
 
-	slideContainer( index = 1 ) {
+	slideContainer( section, index = 1 ) {
 
 		let translateX = 0;
 		let translateY = 0;
@@ -361,6 +390,7 @@ export default class Cachu {
 		}
 		else if ( this.options.scrollingDirection === 'horizontal' ) {
 			translateX = (-1 * this.state.wrapperWidth) * (index - 1);
+			if ( false === this.options.fixSectionsHeight ) this.elements.container.style.height = getOuterHeight( section ) + 'px';
 		}
 
 		this.elements.container.style.transform = "translate3d("+translateX+"px,"+translateY+"px,0px)";
