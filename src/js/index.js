@@ -164,7 +164,7 @@ export default class Cachu {
 			}
 
 			optimizedResize.add( () => {
-				console.log(`I need to re-arrange the slider.`);
+				this._positionateOnViewport();
 			});
 
 			// Hook navigation actions.
