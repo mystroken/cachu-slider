@@ -1,5 +1,4 @@
 const debounce = require("lodash.debounce");
-import Hamster from "hamsterjs";
 import CachuSlide from "./slide";
 import CachuSlideList from "./slide-list";
 import CachuSlideListItem from "./slide-list-item";
@@ -17,7 +16,8 @@ import {
 	setSectionsWidth,
 	removeClass,
 	addClass,
-	optimizedResize
+	optimizedResize,
+	Skrllr
 } from "./helpers";
 
 
@@ -158,9 +158,8 @@ export default class Cachu {
 
 			// Attach events.
 			if ( false === this.options.disableMouseEvents ) {
-				const hamster = Hamster(this.elements.container);
-				const onMouseWheelDebounced = debounce((event, delta) => this._onMouseWheel(delta), 0, { "maxWait": 1000 });
-				hamster.wheel(onMouseWheelDebounced);
+				Skrllr.init({el: this.elements.container});
+				Skrllr.on(debounce((event) => this._onMouseWheel(event), 0, { "maxWait": 2000 }));
 			}
 
 			optimizedResize.add( () => {
@@ -196,9 +195,9 @@ export default class Cachu {
 		});
 	}
 
-	_onMouseWheel(delta) {
+	_onMouseWheel(event) {
 		if (false === this.state.isScrolling) {
-			if (delta > 0) this.prev();
+			if (event.deltaY > 0) this.prev();
 			else this.next();
 		}
 	}
@@ -397,6 +396,7 @@ export default class Cachu {
 	}
 
 	destroy() {
+		Skrllr.destroy();
 		this._dehydrateSlider();
 	}
 }
