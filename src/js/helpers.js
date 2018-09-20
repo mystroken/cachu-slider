@@ -190,7 +190,6 @@ export var Skrllr = (function(document) {
 
 	var s = {},
 	lethargy = new Lethargy(),
-	el = document,
 	numListeners,
 	listeners = [],
 	initialized = false;
@@ -218,8 +217,17 @@ export var Skrllr = (function(document) {
 		originalEvent: null
 	};
 
+	// Options
+	var el = document,
+	listenMouseWheelEvent = true,
+	listenKeyboardEvent = true,
+	listenTouchEvent = true;
+
 	s.init = function(options) {
 		el = options.el;
+		listenTouchEvent = options.listenTouchEvent;
+		listenKeyboardEvent = options.listenKeyboardEvent;
+		listenMouseWheelEvent = options.listenMouseWheelEvent;
 	}
 
 	var notify = function(e) {
@@ -289,42 +297,42 @@ export var Skrllr = (function(document) {
 	}
 
 	var attachEventListeners = function() {
-		if(hasWheelEvent) el.addEventListener("wheel", onWheel);
-		if(hasMouseWheelEvent) el.addEventListener("mousewheel", onMouseWheel);
+		if(listenMouseWheelEvent && hasWheelEvent) el.addEventListener("wheel", onWheel);
+		if(listenMouseWheelEvent && hasMouseWheelEvent) el.addEventListener("mousewheel", onMouseWheel);
 
-		if(hasTouch) {
+		if(listenTouchEvent && hasTouch) {
 			el.addEventListener("touchstart", onTouchStart);
 			el.addEventListener("touchmove", onTouchMove);
 		}
 
-		if(hasPointer && hasTouchWin) {
+		if(listenTouchEvent && hasPointer && hasTouchWin) {
 			bodyTouchAction = el.body.style.msTouchAction;
 			document.body.style.msTouchAction = "none";
 			el.addEventListener("MSPointerDown", onTouchStart, true);
 			el.addEventListener("MSPointerMove", onTouchMove, true);
 		}
 
-		if(hasKeyDown) document.addEventListener("keydown", onKeyDown);
+		if(listenKeyboardEvent && hasKeyDown) document.addEventListener("keydown", onKeyDown);
 
 		initialized = true;
 	};
 
 	var destroyEventListeners = function() {
-		if(hasWheelEvent) el.removeEventListener("wheel", onWheel);
-		if(hasMouseWheelEvent) el.removeEventListener("mousewheel", onMouseWheel);
+		if(listenMouseWheelEvent && hasWheelEvent) el.removeEventListener("wheel", onWheel);
+		if(listenMouseWheelEvent && hasMouseWheelEvent) el.removeEventListener("mousewheel", onMouseWheel);
 
-		if(hasTouch) {
+		if(listenTouchEvent && hasTouch) {
 			el.removeEventListener("touchstart", onTouchStart);
 			el.removeEventListener("touchmove", onTouchMove);
 		}
 
-		if(hasPointer && hasTouchWin) {
+		if(listenTouchEvent && hasPointer && hasTouchWin) {
 			document.body.style.msTouchAction = bodyTouchAction;
 			el.removeEventListener("MSPointerDown", onTouchStart, true);
 			el.removeEventListener("MSPointerMove", onTouchMove, true);
 		}
 
-		if(hasKeyDown) document.removeEventListener("keydown", onKeyDown);
+		if(listenKeyboardEvent && hasKeyDown) document.removeEventListener("keydown", onKeyDown);
 
 		initialized = false;
 	};

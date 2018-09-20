@@ -23,6 +23,8 @@ import {
 
 const defaultOptions = {
   disableMouseEvents: false, // Disable mousewheel event listening.
+  disableKeyboardEvents: false, // Disable keyboard event listening.
+  disableTouchEvents: false, // Disable event listening on touchable device (Swipe).
 	scrollingSpeed: 1000,  // The speed of the transition.
 	scrollingLoop: true,  // Loop after reaching the end.
 	scrollingDirection: 'vertical',  // Loop after reaching the end.
@@ -157,10 +159,13 @@ export default class Cachu {
 			this.elements.container.style.transition = `transform ${this.options.scrollingSpeed}ms cubic-bezier(.56,.12,.12,.98)`;
 
 			// Attach events.
-			if ( false === this.options.disableMouseEvents ) {
-				Skrllr.init({el: this.elements.container});
-				Skrllr.on(debounce((event) => this._onMouseWheel(event), 0, { "maxWait": 2000 }));
-			}
+			Skrllr.init({
+				el: this.elements.container,
+				listenMouseWheelEvent: !this.options.disableMouseEvents,
+				listenKeyboardEvent: !this.options.disableKeyboardEvents,
+				listenTouchEvent: !this.options.disableTouchEvents
+			});
+			Skrllr.on(debounce((event) => this._onScrollEvents(event), 0, { "maxWait": 1500 }));
 
 			optimizedResize.add( () => {
 				this._positionateOnViewport();
@@ -195,10 +200,22 @@ export default class Cachu {
 		});
 	}
 
-	_onMouseWheel(event) {
+	_onScrollEvents(event) {
 		if (false === this.state.isScrolling) {
-			if (event.deltaY > 0) this.prev();
-			else this.next();
+
+			const { mode } = this.state;
+			const { scrollingDirection } = this.options;
+			const { deltaX, deltaY } = event;
+
+			if (mode === CACHU_MODE_FULL_PAGE) {
+				if (deltaY > 0 || deltaX > 0) this.prev();
+				else if (deltaY < 0 || deltaX < 0) this.next();
+			} else if (mode === CACHU_MODE_CONTENT_FIT) {
+				const deltaValue = (scrollingDirection === 'horizontal') ? deltaX : deltaY;
+				if (deltaValue > 12) this.prev();
+				else if (deltaValue < -12) this.next();
+			}
+
 		}
 	}
 
