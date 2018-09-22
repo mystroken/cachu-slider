@@ -103,5 +103,6 @@ export default class CachuSlide {
 	}
 
 	_initialize() {
+		this.elements.section.style.visibility = "hidden";
 	}
 }
