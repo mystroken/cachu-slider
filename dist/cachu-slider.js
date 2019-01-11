@@ -1,6 +1,6 @@
 /*!
- * Cachu Slider v0.7.0
- * Copyright (c) 2018 Mystro Ken <mystroken@gmail.com>
+ * Cachu Slider v0.8.0
+ * Copyright (c) 2019 Mystro Ken <mystroken@gmail.com>
  * MIT License
  */
 Cachu =
@@ -286,7 +286,7 @@ module.exports = function (fn, that, length) {
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+	value: true
 });
 exports.whichTransitionEvent = whichTransitionEvent;
 exports.whichAnimationEvent = whichAnimationEvent;
@@ -298,39 +298,39 @@ var CACHU_MODE_CONTENT_FIT = exports.CACHU_MODE_CONTENT_FIT = "content-fit";
 
 // Function from David Walsh: http://davidwalsh.name/css-animation-callback
 function whichTransitionEvent() {
-  var t,
-      el = document.createElement("fakeelement");
+	var t,
+	    el = document.createElement("fakeelement");
 
-  var transitions = {
-    "transition": "transitionend",
-    "OTransition": "oTransitionEnd",
-    "MozTransition": "transitionend",
-    "WebkitTransition": "webkitTransitionEnd"
-  };
+	var transitions = {
+		"transition": "transitionend",
+		"OTransition": "oTransitionEnd",
+		"MozTransition": "transitionend",
+		"WebkitTransition": "webkitTransitionEnd"
+	};
 
-  for (t in transitions) {
-    if (el.style[t] !== undefined) {
-      return transitions[t];
-    }
-  }
+	for (t in transitions) {
+		if (el.style[t] !== undefined) {
+			return transitions[t];
+		}
+	}
 }
 
 function whichAnimationEvent() {
-  var t,
-      el = document.createElement("fakeelement");
+	var t,
+	    el = document.createElement("fakeelement");
 
-  var animations = {
-    "animation": "animationend",
-    "OAnimation": "oAnimationEnd",
-    "MozAnimation": "animationend",
-    "WebkitAnimation": "webkitAnimationEnd"
-  };
+	var animations = {
+		"animation": "animationend",
+		"OAnimation": "oAnimationEnd",
+		"MozAnimation": "animationend",
+		"WebkitAnimation": "webkitAnimationEnd"
+	};
 
-  for (t in animations) {
-    if (el.style[t] !== undefined) {
-      return animations[t];
-    }
-  }
+	for (t in animations) {
+		if (el.style[t] !== undefined) {
+			return animations[t];
+		}
+	}
 }
 
 /**
@@ -338,15 +338,15 @@ function whichAnimationEvent() {
  * @param {NodeList} sections
  */
 function getSectionsMaxHeight(sections) {
-  var maxHeight = 0;
+	var maxHeight = 0;
 
-  for (var i = 0; i < sections.length; i++) {
-    var section = sections[i];
-    var height = getOuterHeight(section);
-    if (height > maxHeight) maxHeight = height;
-  }
+	for (var i = 0; i < sections.length; i++) {
+		var section = sections[i];
+		var height = getOuterHeight(section);
+		if (height > maxHeight) maxHeight = height;
+	}
 
-  return maxHeight;
+	return maxHeight;
 }
 
 /**
@@ -354,10 +354,10 @@ function getSectionsMaxHeight(sections) {
  * @param {int} height
  */
 var setSectionsHeight = exports.setSectionsHeight = function setSectionsHeight(sections, height) {
-  for (var i = 0; i < sections.length; i++) {
-    var section = sections[i];
-    section.style.height = height + "px";
-  }
+	for (var i = 0; i < sections.length; i++) {
+		var section = sections[i];
+		section.style.height = height + "px";
+	}
 };
 
 /**
@@ -365,10 +365,10 @@ var setSectionsHeight = exports.setSectionsHeight = function setSectionsHeight(s
  * @param {int} width
  */
 var setSectionsWidth = exports.setSectionsWidth = function setSectionsWidth(sections, width) {
-  for (var i = 0; i < sections.length; i++) {
-    var section = sections[i];
-    section.style.width = width + "px";
-  }
+	for (var i = 0; i < sections.length; i++) {
+		var section = sections[i];
+		section.style.width = width + "px";
+	}
 };
 
 /**
@@ -378,8 +378,8 @@ var setSectionsWidth = exports.setSectionsWidth = function setSectionsWidth(sect
  * @param {string} className
  */
 function addClass(el, className) {
-  if (el.classList) el.classList.add(className);else el.className += ' ' + className;
-  return el;
+	if (el.classList) el.classList.add(className);else el.className += ' ' + className;
+	return el;
 }
 
 /**
@@ -389,9 +389,9 @@ function addClass(el, className) {
  * @param {string} className
  */
 var removeClass = exports.removeClass = function removeClass(el, className) {
-  //console.log(el);
-  if (el.classList) el.classList.remove(className);else el.className = el.className.replace(new RegExp('(^|\\b)' + className.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
-  return el;
+	//console.log(el);
+	if (el.classList) el.classList.remove(className);else el.className = el.className.replace(new RegExp('(^|\\b)' + className.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
+	return el;
 };
 
 /**
@@ -401,7 +401,7 @@ var removeClass = exports.removeClass = function removeClass(el, className) {
  * @param {string} className
  */
 var hasClass = exports.hasClass = function hasClass(el, className) {
-  return el.classList ? el.classList.contains(className) : new RegExp('(^| )' + className + '( |$)', 'gi').test(el.className);
+	return el.classList ? el.classList.contains(className) : new RegExp('(^| )' + className + '( |$)', 'gi').test(el.className);
 };
 
 /**
@@ -410,23 +410,244 @@ var hasClass = exports.hasClass = function hasClass(el, className) {
  * @param {HTMLElement} el
  */
 var getOuterHeight = exports.getOuterHeight = function getOuterHeight(el) {
-  var height = el.offsetHeight;
-  var style = getComputedStyle(el);
+	var height = el.offsetHeight;
+	var style = getComputedStyle(el);
 
-  height += parseInt(style.marginTop) + parseInt(style.marginBottom);
-  return height;
+	height += parseInt(style.marginTop) + parseInt(style.marginBottom);
+	return height;
 };
 
 /**
  * @param {HTMLElement} el
  */
 var getOuterWidth = exports.getOuterWidth = function getOuterWidth(el) {
-  var width = el.offsetWidth;
-  var style = getComputedStyle(el);
+	var width = el.offsetWidth;
+	var style = getComputedStyle(el);
 
-  width += parseInt(style.marginLeft) + parseInt(style.marginRight);
-  return width;
+	width += parseInt(style.marginLeft) + parseInt(style.marginRight);
+	return width;
 };
+
+var optimizedResize = exports.optimizedResize = function () {
+
+	var callbacks = [],
+	    running = false;
+
+	// fired on resize event
+	function resize() {
+
+		if (!running) {
+			running = true;
+
+			if (window.requestAnimationFrame) {
+				window.requestAnimationFrame(runCallbacks);
+			} else {
+				setTimeout(runCallbacks, 66);
+			}
+		}
+	}
+
+	// run the actual call    backs
+	function runCallbacks() {
+
+		callbacks.forEach(function (callback) {
+			callback();
+		});
+
+		running = false;
+	}
+
+	// adds callback to loop
+	function addCallback(callback) {
+
+		if (callback) {
+			callbacks.push(callback);
+		}
+	}
+
+	return {
+		// public method to add additional callback
+		add: function add(callback) {
+			if (!callbacks.length) {
+				window.addEventListener('resize', resize);
+			}
+			addCallback(callback);
+		}
+	};
+}();
+
+var Skrllr = exports.Skrllr = function (document) {
+	var Lethargy = __webpack_require__(77).Lethargy;
+
+	var s = {},
+	    lethargy = new Lethargy(),
+	    numListeners,
+	    listeners = [],
+	    initialized = false;
+
+	// How many pixels to move with each key press
+	var keyStep = 120,
+	    bodyTouchAction,
+	    touchStartX,
+	    touchStartY;
+
+	var hasWheelEvent = 'onwheel' in document;
+	var hasMouseWheelEvent = 'onmousewheel' in document;
+	var hasTouch = 'ontouchstart' in document;
+	var hasTouchWin = navigator.msMaxTouchPoints && navigator.msMaxTouchPoints > 1;
+	var hasPointer = !!window.navigator.msPointerEnabled;
+	var hasKeyDown = 'onkeydown' in document;
+
+	var isFirefox = navigator.userAgent.indexOf('Firefox') > -1;
+
+	var event = {
+		x: 0,
+		y: 0,
+		deltaX: 0,
+		deltaY: 0,
+		originalEvent: null
+	};
+
+	// Options
+	var el = document,
+	    listenMouseWheelEvent = true,
+	    listenKeyboardEvent = true,
+	    listenTouchEvent = true;
+
+	s.init = function (options) {
+		el = options.el;
+		listenTouchEvent = options.listenTouchEvent;
+		listenKeyboardEvent = options.listenKeyboardEvent;
+		listenMouseWheelEvent = options.listenMouseWheelEvent;
+	};
+
+	var notify = function notify(e) {
+		event.x += event.deltaX;
+		event.y += event.deltaY;
+		event.originalEvent = e;
+
+		for (var i = 0; i < numListeners; i++) {
+			listeners[i](event);
+		}
+	};
+
+	var onWheel = function onWheel(e) {
+		if (lethargy.check(e) === false) return;
+		// In Chrome and in Firefox (at least the new one)
+		event.deltaX = e.wheelDeltaX || e.deltaX * -1;
+		event.deltaY = e.wheelDeltaY || e.deltaY * -1;
+
+		notify(e);
+	};
+
+	var onMouseWheel = function onMouseWheel(e) {
+		if (lethargy.check(e) === false) return;
+		// In Safari, IE and in Chrome if 'wheel' isn't defined
+		event.deltaX = e.wheelDeltaX ? e.wheelDeltaX : 0;
+		event.deltaY = e.wheelDeltaY ? e.wheelDeltaY : e.wheelDelta;
+
+		notify(e);
+	};
+
+	var onTouchStart = function onTouchStart(e) {
+		var t = e.targetTouches ? e.targetTouches[0] : e;
+		touchStartX = t.pageX;
+		touchStartY = t.pageY;
+	};
+
+	var onTouchMove = function onTouchMove(e) {
+		// e.preventDefault(); // < This needs to be managed externally
+		var t = e.targetTouches ? e.targetTouches[0] : e;
+
+		event.deltaX = t.pageX - touchStartX;
+		event.deltaY = t.pageY - touchStartY;
+
+		touchStartX = t.pageX;
+		touchStartY = t.pageY;
+
+		notify(e);
+	};
+
+	var onKeyDown = function onKeyDown(e) {
+		// 37 left arrow, 38 up arrow, 39 right arrow, 40 down arrow
+		event.deltaX = event.deltaY = 0;
+		switch (e.keyCode) {
+			case 37:
+				event.deltaX = -keyStep;
+				break;
+			case 39:
+				event.deltaX = keyStep;
+				break;
+			case 38:
+				event.deltaY = keyStep;
+				break;
+			case 40:
+				event.deltaY = -keyStep;
+				break;
+		}
+
+		notify(e);
+	};
+
+	var attachEventListeners = function attachEventListeners() {
+		if (listenMouseWheelEvent && hasWheelEvent) el.addEventListener("wheel", onWheel);
+		if (listenMouseWheelEvent && hasMouseWheelEvent) el.addEventListener("mousewheel", onMouseWheel);
+
+		if (listenTouchEvent && hasTouch) {
+			el.addEventListener("touchstart", onTouchStart);
+			el.addEventListener("touchmove", onTouchMove);
+		}
+
+		if (listenTouchEvent && hasPointer && hasTouchWin) {
+			bodyTouchAction = el.body.style.msTouchAction;
+			document.body.style.msTouchAction = "none";
+			el.addEventListener("MSPointerDown", onTouchStart, true);
+			el.addEventListener("MSPointerMove", onTouchMove, true);
+		}
+
+		if (listenKeyboardEvent && hasKeyDown) document.addEventListener("keydown", onKeyDown);
+
+		initialized = true;
+	};
+
+	var destroyEventListeners = function destroyEventListeners() {
+		if (listenMouseWheelEvent && hasWheelEvent) el.removeEventListener("wheel", onWheel);
+		if (listenMouseWheelEvent && hasMouseWheelEvent) el.removeEventListener("mousewheel", onMouseWheel);
+
+		if (listenTouchEvent && hasTouch) {
+			el.removeEventListener("touchstart", onTouchStart);
+			el.removeEventListener("touchmove", onTouchMove);
+		}
+
+		if (listenTouchEvent && hasPointer && hasTouchWin) {
+			document.body.style.msTouchAction = bodyTouchAction;
+			el.removeEventListener("MSPointerDown", onTouchStart, true);
+			el.removeEventListener("MSPointerMove", onTouchMove, true);
+		}
+
+		if (listenKeyboardEvent && hasKeyDown) document.removeEventListener("keydown", onKeyDown);
+
+		initialized = false;
+	};
+
+	s.on = function (f) {
+		if (!initialized) attachEventListeners();
+		listeners.push(f);
+		numListeners = listeners.length;
+	};
+
+	s.off = function (f) {
+		listeners.splice(f, 1);
+		numListeners = listeners.length;
+		if (numListeners <= 0) destroyEventListeners();
+	};
+
+	s.destroy = function () {
+		destroyEventListeners();
+	};
+
+	return s;
+}(document);
 
 /***/ }),
 /* 12 */
@@ -1249,6 +1470,7 @@ var CachuSlide = function () {
 		value: function _enter() {
 			var _this = this;
 
+			this.elements.section.style.visibility = "visible";
 			return new _promise2.default(function (resolve, reject) {
 
 				// Attach the event listener for resolving after
@@ -1269,7 +1491,7 @@ var CachuSlide = function () {
 				}
 
 				// Slide the container to the correct viewport.
-				_this.slider.slideContainer(_this.index);
+				_this.slider.slideContainer(_this.elements.section, _this.index);
 
 				// If the scrolling speed is not
 				// greater than zero, resolve immediatly.
@@ -1295,7 +1517,9 @@ var CachuSlide = function () {
 		}
 	}, {
 		key: "_initialize",
-		value: function _initialize() {}
+		value: function _initialize() {
+			this.elements.section.style.visibility = "hidden";
+		}
 	}]);
 
 	return CachuSlide;
@@ -2822,332 +3046,109 @@ exports.default = CachuSlideList;
 
 /***/ }),
 /* 77 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-/*
- * Hamster.js v1.1.2
- * (c) 2013 Monospaced http://monospaced.com
- * License: MIT
- */
+// Generated by CoffeeScript 1.9.2
+(function() {
+  var root;
 
-(function(window, document){
-'use strict';
+  root = typeof exports !== "undefined" && exports !== null ? exports : this;
 
-/**
- * Hamster
- * use this to create instances
- * @returns {Hamster.Instance}
- * @constructor
- */
-var Hamster = function(element) {
-  return new Hamster.Instance(element);
-};
-
-// default event name
-Hamster.SUPPORT = 'wheel';
-
-// default DOM methods
-Hamster.ADD_EVENT = 'addEventListener';
-Hamster.REMOVE_EVENT = 'removeEventListener';
-Hamster.PREFIX = '';
-
-// until browser inconsistencies have been fixed...
-Hamster.READY = false;
-
-Hamster.Instance = function(element){
-  if (!Hamster.READY) {
-    // fix browser inconsistencies
-    Hamster.normalise.browser();
-
-    // Hamster is ready...!
-    Hamster.READY = true;
-  }
-
-  this.element = element;
-
-  // store attached event handlers
-  this.handlers = [];
-
-  // return instance
-  return this;
-};
-
-/**
- * create new hamster instance
- * all methods should return the instance itself, so it is chainable.
- * @param   {HTMLElement}       element
- * @returns {Hamster.Instance}
- * @constructor
- */
-Hamster.Instance.prototype = {
-  /**
-   * bind events to the instance
-   * @param   {Function}    handler
-   * @param   {Boolean}     useCapture
-   * @returns {Hamster.Instance}
-   */
-  wheel: function onEvent(handler, useCapture){
-    Hamster.event.add(this, Hamster.SUPPORT, handler, useCapture);
-
-    // handle MozMousePixelScroll in older Firefox
-    if (Hamster.SUPPORT === 'DOMMouseScroll') {
-      Hamster.event.add(this, 'MozMousePixelScroll', handler, useCapture);
+  root.Lethargy = (function() {
+    function Lethargy(stability, sensitivity, tolerance, delay) {
+      this.stability = stability != null ? Math.abs(stability) : 8;
+      this.sensitivity = sensitivity != null ? 1 + Math.abs(sensitivity) : 100;
+      this.tolerance = tolerance != null ? 1 + Math.abs(tolerance) : 1.1;
+      this.delay = delay != null ? delay : 150;
+      this.lastUpDeltas = (function() {
+        var i, ref, results;
+        results = [];
+        for (i = 1, ref = this.stability * 2; 1 <= ref ? i <= ref : i >= ref; 1 <= ref ? i++ : i--) {
+          results.push(null);
+        }
+        return results;
+      }).call(this);
+      this.lastDownDeltas = (function() {
+        var i, ref, results;
+        results = [];
+        for (i = 1, ref = this.stability * 2; 1 <= ref ? i <= ref : i >= ref; 1 <= ref ? i++ : i--) {
+          results.push(null);
+        }
+        return results;
+      }).call(this);
+      this.deltasTimestamp = (function() {
+        var i, ref, results;
+        results = [];
+        for (i = 1, ref = this.stability * 2; 1 <= ref ? i <= ref : i >= ref; 1 <= ref ? i++ : i--) {
+          results.push(null);
+        }
+        return results;
+      }).call(this);
     }
 
-    return this;
-  },
-
-  /**
-   * unbind events to the instance
-   * @param   {Function}    handler
-   * @param   {Boolean}     useCapture
-   * @returns {Hamster.Instance}
-   */
-  unwheel: function offEvent(handler, useCapture){
-    // if no handler argument,
-    // unbind the last bound handler (if exists)
-    if (handler === undefined && (handler = this.handlers.slice(-1)[0])) {
-      handler = handler.original;
-    }
-
-    Hamster.event.remove(this, Hamster.SUPPORT, handler, useCapture);
-
-    // handle MozMousePixelScroll in older Firefox
-    if (Hamster.SUPPORT === 'DOMMouseScroll') {
-      Hamster.event.remove(this, 'MozMousePixelScroll', handler, useCapture);
-    }
-
-    return this;
-  }
-};
-
-Hamster.event = {
-  /**
-   * cross-browser 'addWheelListener'
-   * @param   {Instance}    hamster
-   * @param   {String}      eventName
-   * @param   {Function}    handler
-   * @param   {Boolean}     useCapture
-   */
-  add: function add(hamster, eventName, handler, useCapture){
-    // store the original handler
-    var originalHandler = handler;
-
-    // redefine the handler
-    handler = function(originalEvent){
-
-      if (!originalEvent) {
-        originalEvent = window.event;
+    Lethargy.prototype.check = function(e) {
+      var lastDelta;
+      e = e.originalEvent || e;
+      if (e.wheelDelta != null) {
+        lastDelta = e.wheelDelta;
+      } else if (e.deltaY != null) {
+        lastDelta = e.deltaY * -40;
+      } else if ((e.detail != null) || e.detail === 0) {
+        lastDelta = e.detail * -40;
       }
-
-      // create a normalised event object,
-      // and normalise "deltas" of the mouse wheel
-      var event = Hamster.normalise.event(originalEvent),
-          delta = Hamster.normalise.delta(originalEvent);
-
-      // fire the original handler with normalised arguments
-      return originalHandler(event, delta[0], delta[1], delta[2]);
-
+      this.deltasTimestamp.push(Date.now());
+      this.deltasTimestamp.shift();
+      if (lastDelta > 0) {
+        this.lastUpDeltas.push(lastDelta);
+        this.lastUpDeltas.shift();
+        return this.isInertia(1);
+      } else {
+        this.lastDownDeltas.push(lastDelta);
+        this.lastDownDeltas.shift();
+        return this.isInertia(-1);
+      }
+      return false;
     };
 
-    // cross-browser addEventListener
-    hamster.element[Hamster.ADD_EVENT](Hamster.PREFIX + eventName, handler, useCapture || false);
-
-    // store original and normalised handlers on the instance
-    hamster.handlers.push({
-      original: originalHandler,
-      normalised: handler
-    });
-  },
-
-  /**
-   * removeWheelListener
-   * @param   {Instance}    hamster
-   * @param   {String}      eventName
-   * @param   {Function}    handler
-   * @param   {Boolean}     useCapture
-   */
-  remove: function remove(hamster, eventName, handler, useCapture){
-    // find the normalised handler on the instance
-    var originalHandler = handler,
-        lookup = {},
-        handlers;
-    for (var i = 0, len = hamster.handlers.length; i < len; ++i) {
-      lookup[hamster.handlers[i].original] = hamster.handlers[i];
-    }
-    handlers = lookup[originalHandler];
-    handler = handlers.normalised;
-
-    // cross-browser removeEventListener
-    hamster.element[Hamster.REMOVE_EVENT](Hamster.PREFIX + eventName, handler, useCapture || false);
-
-    // remove original and normalised handlers from the instance
-    for (var h in hamster.handlers) {
-      if (hamster.handlers[h] == handlers) {
-        hamster.handlers.splice(h, 1);
-        break;
+    Lethargy.prototype.isInertia = function(direction) {
+      var lastDeltas, lastDeltasNew, lastDeltasOld, newAverage, newSum, oldAverage, oldSum;
+      lastDeltas = direction === -1 ? this.lastDownDeltas : this.lastUpDeltas;
+      if (lastDeltas[0] === null) {
+        return direction;
       }
-    }
-  }
-};
+      if (this.deltasTimestamp[(this.stability * 2) - 2] + this.delay > Date.now() && lastDeltas[0] === lastDeltas[(this.stability * 2) - 1]) {
+        return false;
+      }
+      lastDeltasOld = lastDeltas.slice(0, this.stability);
+      lastDeltasNew = lastDeltas.slice(this.stability, this.stability * 2);
+      oldSum = lastDeltasOld.reduce(function(t, s) {
+        return t + s;
+      });
+      newSum = lastDeltasNew.reduce(function(t, s) {
+        return t + s;
+      });
+      oldAverage = oldSum / lastDeltasOld.length;
+      newAverage = newSum / lastDeltasNew.length;
+      if (Math.abs(oldAverage) < Math.abs(newAverage * this.tolerance) && (this.sensitivity < Math.abs(newAverage))) {
+        return direction;
+      } else {
+        return false;
+      }
+    };
 
-/**
- * these hold the lowest deltas,
- * used to normalise the delta values
- * @type {Number}
- */
-var lowestDelta,
-    lowestDeltaXY;
+    Lethargy.prototype.showLastUpDeltas = function() {
+      return this.lastUpDeltas;
+    };
 
-Hamster.normalise = {
-  /**
-   * fix browser inconsistencies
-   */
-  browser: function normaliseBrowser(){
-    // detect deprecated wheel events
-    if (!('onwheel' in document || document.documentMode >= 9)) {
-      Hamster.SUPPORT = document.onmousewheel !== undefined ?
-                        'mousewheel' : // webkit and IE < 9 support at least "mousewheel"
-                        'DOMMouseScroll'; // assume remaining browsers are older Firefox
-    }
+    Lethargy.prototype.showLastDownDeltas = function() {
+      return this.lastDownDeltas;
+    };
 
-    // detect deprecated event model
-    if (!window.addEventListener) {
-      // assume IE < 9
-      Hamster.ADD_EVENT = 'attachEvent';
-      Hamster.REMOVE_EVENT = 'detachEvent';
-      Hamster.PREFIX = 'on';
-    }
+    return Lethargy;
 
-  },
+  })();
 
-  /**
-   * create a normalised event object
-   * @param   {Function}    originalEvent
-   * @returns {Object}      event
-   */
-   event: function normaliseEvent(originalEvent){
-    var event = {
-          // keep a reference to the original event object
-          originalEvent: originalEvent,
-          target: originalEvent.target || originalEvent.srcElement,
-          type: 'wheel',
-          deltaMode: originalEvent.type === 'MozMousePixelScroll' ? 0 : 1,
-          deltaX: 0,
-          deltaZ: 0,
-          preventDefault: function(){
-            if (originalEvent.preventDefault) {
-              originalEvent.preventDefault();
-            } else {
-              originalEvent.returnValue = false;
-            }
-          },
-          stopPropagation: function(){
-            if (originalEvent.stopPropagation) {
-              originalEvent.stopPropagation();
-            } else {
-              originalEvent.cancelBubble = false;
-            }
-          }
-        };
-
-    // calculate deltaY (and deltaX) according to the event
-
-    // 'mousewheel'
-    if (originalEvent.wheelDelta) {
-      event.deltaY = - 1/40 * originalEvent.wheelDelta;
-    }
-    // webkit
-    if (originalEvent.wheelDeltaX) {
-      event.deltaX = - 1/40 * originalEvent.wheelDeltaX;
-    }
-
-    // 'DomMouseScroll'
-    if (originalEvent.detail) {
-      event.deltaY = originalEvent.detail;
-    }
-
-    return event;
-  },
-
-  /**
-   * normalise 'deltas' of the mouse wheel
-   * @param   {Function}    originalEvent
-   * @returns {Array}       deltas
-   */
-  delta: function normaliseDelta(originalEvent){
-    var delta = 0,
-      deltaX = 0,
-      deltaY = 0,
-      absDelta = 0,
-      absDeltaXY = 0,
-      fn;
-
-    // normalise deltas according to the event
-
-    // 'wheel' event
-    if (originalEvent.deltaY) {
-      deltaY = originalEvent.deltaY * -1;
-      delta  = deltaY;
-    }
-    if (originalEvent.deltaX) {
-      deltaX = originalEvent.deltaX;
-      delta  = deltaX * -1;
-    }
-
-    // 'mousewheel' event
-    if (originalEvent.wheelDelta) {
-      delta = originalEvent.wheelDelta;
-    }
-    // webkit
-    if (originalEvent.wheelDeltaY) {
-      deltaY = originalEvent.wheelDeltaY;
-    }
-    if (originalEvent.wheelDeltaX) {
-      deltaX = originalEvent.wheelDeltaX * -1;
-    }
-
-    // 'DomMouseScroll' event
-    if (originalEvent.detail) {
-      delta = originalEvent.detail * -1;
-    }
-
-    // Don't return NaN
-    if (delta === 0) {
-      return [0, 0, 0];
-    }
-
-    // look for lowest delta to normalize the delta values
-    absDelta = Math.abs(delta);
-    if (!lowestDelta || absDelta < lowestDelta) {
-      lowestDelta = absDelta;
-    }
-    absDeltaXY = Math.max(Math.abs(deltaY), Math.abs(deltaX));
-    if (!lowestDeltaXY || absDeltaXY < lowestDeltaXY) {
-      lowestDeltaXY = absDeltaXY;
-    }
-
-    // convert deltas to whole numbers
-    fn = delta > 0 ? 'floor' : 'ceil';
-    delta  = Math[fn](delta / lowestDelta);
-    deltaX = Math[fn](deltaX / lowestDeltaXY);
-    deltaY = Math[fn](deltaY / lowestDeltaXY);
-
-    return [delta, deltaX, deltaY];
-  }
-};
-
-if (typeof window.define === 'function' && window.define.amd) {
-  // AMD
-  window.define('hamster', [], function(){
-    return Hamster;
-  });
-} else if (true) {
-  // CommonJS
-  module.exports = Hamster;
-} else {}
-
-})(window, window.document);
+}).call(this);
 
 
 /***/ }),
@@ -4035,10 +4036,6 @@ var _assign2 = _interopRequireDefault(_assign);
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; (0, _defineProperty2.default)(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _hamsterjs = __webpack_require__(77);
-
-var _hamsterjs2 = _interopRequireDefault(_hamsterjs);
-
 var _slide = __webpack_require__(40);
 
 var _slide2 = _interopRequireDefault(_slide);
@@ -4074,9 +4071,12 @@ var debounce = __webpack_require__(57);
 
 var defaultOptions = {
 	disableMouseEvents: false, // Disable mousewheel event listening.
+	disableKeyboardEvents: false, // Disable keyboard event listening.
+	disableTouchEvents: false, // Disable event listening on touchable device (Swipe).
 	scrollingSpeed: 1000, // The speed of the transition.
 	scrollingLoop: true, // Loop after reaching the end.
 	scrollingDirection: 'vertical', // Loop after reaching the end.
+	fixSectionsHeight: true, // Sets or not a same height to all sections.
 	navigationEnabled: true, // Enable navigation buttons
 	navigationPosition: 'right' // The Navigation's position
 };
@@ -4220,13 +4220,19 @@ var Cachu = function () {
 				_this2.elements.container.style.transition = "transform " + _this2.options.scrollingSpeed + "ms cubic-bezier(.56,.12,.12,.98)";
 
 				// Attach events.
-				if (false === _this2.options.disableMouseEvents) {
-					var hamster = (0, _hamsterjs2.default)(_this2.elements.container);
-					var onMouseWheelDebounced = debounce(function (event, delta) {
-						return _this2._onMouseWheel(delta);
-					}, 0, { "maxWait": 1000 });
-					hamster.wheel(onMouseWheelDebounced);
-				}
+				_helpers.Skrllr.init({
+					el: _this2.elements.container,
+					listenMouseWheelEvent: !_this2.options.disableMouseEvents,
+					listenKeyboardEvent: !_this2.options.disableKeyboardEvents,
+					listenTouchEvent: !_this2.options.disableTouchEvents
+				});
+				_helpers.Skrllr.on(debounce(function (event) {
+					return _this2._onScrollEvents(event);
+				}, 0, { "maxWait": 1500 }));
+
+				_helpers.optimizedResize.add(function () {
+					_this2._positionateOnViewport();
+				});
 
 				// Hook navigation actions.
 				var cachuSlideListItem = _this2.slideList.head;
@@ -4261,10 +4267,21 @@ var Cachu = function () {
 			});
 		}
 	}, {
-		key: "_onMouseWheel",
-		value: function _onMouseWheel(delta) {
+		key: "_onScrollEvents",
+		value: function _onScrollEvents(event) {
 			if (false === this.state.isScrolling) {
-				if (delta > 0) this.prev();else this.next();
+				var mode = this.state.mode;
+				var scrollingDirection = this.options.scrollingDirection;
+				var deltaX = event.deltaX,
+				    deltaY = event.deltaY;
+
+
+				if (mode === _helpers.CACHU_MODE_FULL_PAGE) {
+					if (deltaY > 0 || deltaX > 0) this.prev();else if (deltaY < 0 || deltaX < 0) this.next();
+				} else if (mode === _helpers.CACHU_MODE_CONTENT_FIT) {
+					var deltaValue = scrollingDirection === 'horizontal' ? deltaX : deltaY;
+					if (deltaValue > 12) this.prev();else if (deltaValue < -12) this.next();
+				}
 			}
 		}
 
@@ -4382,6 +4399,7 @@ var Cachu = function () {
 					//console.info(`Start entering Slide ${to.index}...`);
 					return to.enter();
 				}).then(function () {
+					from.slide.elements.section.style.visibility = "hidden";
 					//console.info(`Slide ${to.index} entered!`);
 					_this5.currentSlideItem = to;
 					_this5.state.isScrolling = false;
@@ -4393,8 +4411,19 @@ var Cachu = function () {
 	}, {
 		key: "_hydrateSlider",
 		value: function _hydrateSlider() {
-			var _this6 = this;
 
+			this._positionateOnViewport();
+
+			// Set the scrolling direction
+			if (this.options.scrollingDirection === 'vertical') {
+				(0, _helpers.removeClass)(this.elements.container, 'cachu__sections--horizontal');
+			} else if (this.options.scrollingDirection === 'horizontal') {
+				(0, _helpers.addClass)(this.elements.container, 'cachu__sections--horizontal');
+			}
+		}
+	}, {
+		key: "_positionateOnViewport",
+		value: function _positionateOnViewport() {
 			// First, we should find an apropriate
 			// height for the wrapper.
 			// Then we'll force each section to fit that height.
@@ -4405,24 +4434,35 @@ var Cachu = function () {
 			// Get the apropriate height of the wrapper.
 			this.state.wrapperHeight = _helpers.CACHU_MODE_CONTENT_FIT === this.state.mode ? (0, _helpers.getSectionsMaxHeight)(this.elements.sections) : (0, _helpers.getOuterHeight)(this.elements.wrapper);
 
-			// Fix the wrapper height and hide overflow.
-			this.elements.wrapper.style.height = this.state.wrapperHeight + "px";
-			this.elements.wrapper.style.overflow = "hidden";
-
-			// Fix the height and the width of each section.
-			(0, _helpers.setSectionsHeight)(this.elements.sections, this.state.wrapperHeight);
-			(0, _helpers.setSectionsWidth)(this.elements.sections, this.state.wrapperWidth);
-
-			// Set the scrolling direction
+			/*
+   |------------------------------
+   | Vertical scrolling
+   |------------------------------
+   */
 			if (this.options.scrollingDirection === 'vertical') {
-				(0, _helpers.removeClass)(this.elements.container, 'cachu__sections--horizontal');
-			} else if (this.options.scrollingDirection === 'horizontal') {
-				(0, _helpers.addClass)(this.elements.container, 'cachu__sections--horizontal');
-			}
+				this.elements.wrapper.style.overflowY = "hidden";
 
-			window.addEventListener('resize', function (e) {
-				_this6._hydrateSlider();
-			});
+				// Fix the height and the width of each section.
+				(0, _helpers.setSectionsHeight)(this.elements.sections, this.state.wrapperHeight);
+				(0, _helpers.setSectionsWidth)(this.elements.sections, this.state.wrapperWidth);
+			}
+			/*
+   |------------------------------
+   | Horizontal scrolling
+   |------------------------------
+   */
+			else if (this.options.scrollingDirection === 'horizontal') {
+					this.elements.wrapper.style.overflowX = "hidden";
+
+					// Fix the wrapper height and hide overflow.
+					if (true === this.options.fixSectionsHeight) this.elements.wrapper.style.height = this.state.wrapperHeight + "px";
+
+					// Fix the height and the width of each section.
+					if (true === this.options.fixSectionsHeight) (0, _helpers.setSectionsHeight)(this.elements.sections, this.state.wrapperHeight);
+					(0, _helpers.setSectionsWidth)(this.elements.sections, this.state.wrapperWidth);
+				}
+
+			this.elements.wrapper.style.overflow = "hidden";
 		}
 	}, {
 		key: "_dehydrateSlider",
@@ -4440,8 +4480,8 @@ var Cachu = function () {
 		}
 	}, {
 		key: "slideContainer",
-		value: function slideContainer() {
-			var index = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+		value: function slideContainer(section) {
+			var index = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
 
 
 			var translateX = 0;
@@ -4451,6 +4491,7 @@ var Cachu = function () {
 				translateY = -1 * this.state.wrapperHeight * (index - 1);
 			} else if (this.options.scrollingDirection === 'horizontal') {
 				translateX = -1 * this.state.wrapperWidth * (index - 1);
+				if (false === this.options.fixSectionsHeight) this.elements.container.style.height = (0, _helpers.getOuterHeight)(section) + 'px';
 			}
 
 			this.elements.container.style.transform = "translate3d(" + translateX + "px," + translateY + "px,0px)";
@@ -4458,6 +4499,7 @@ var Cachu = function () {
 	}, {
 		key: "destroy",
 		value: function destroy() {
+			_helpers.Skrllr.destroy();
 			this._dehydrateSlider();
 		}
 	}]);

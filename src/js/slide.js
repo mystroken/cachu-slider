@@ -59,6 +59,7 @@ export default class CachuSlide {
 	}
 
 	_enter() {
+		this.elements.section.style.visibility = "visible";
 		return new Promise((resolve, reject) => {
 
 			// Attach the event listener for resolving after

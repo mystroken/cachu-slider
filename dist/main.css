@@ -1,6 +1,6 @@
 /*!
- * Cachu Slider v0.7.0
- * Copyright (c) 2018 Mystro Ken <mystroken@gmail.com>
+ * Cachu Slider v0.8.0
+ * Copyright (c) 2019 Mystro Ken <mystroken@gmail.com>
  * MIT License
  */
 .cachu__container {
@@ -23,7 +23,6 @@
 .cachu__section {
   position: relative;
   flex-shrink: 0;
-  height: 100%;
   width: 100%;
 }
 
@@ -92,13 +91,16 @@
   font-family: inherit;
   white-space: nowrap;
   width: 0;
-  max-width: 220px;
-  overflow: hidden;
   display: block;
   opacity: 0;
   cursor: pointer;
   transform: translate3d(0, -50%, 0);
-  transition: all 250ms ease-in-out;
+  transform-style: preserve-3d;
+  transition-property: width, height, opacity;
+  transition-duration: 250ms;
+  transition-timing-function: ease-in-out;
+  filter: blur(0);
+  visibility: visible;
 }
 
 .active .cachu__nav__tooltip {
@@ -107,8 +109,7 @@
 }
 
 .dismissed .cachu__nav__tooltip {
-  opacity: 0;
-  width: 0;
+  visibility: hidden;
 }
 
 /*
@@ -155,6 +156,13 @@
   margin-left: 0.5rem;
 }
 
+.cachu__nav--top .cachu__nav__tooltip,
+.cachu__nav--bottom .cachu__nav__tooltip {
+  right: auto;
+  transform: none;
+  transition-duration: 0ms;
+}
+
 /*
  * Specific to Top Navigation.
  */
@@ -166,6 +174,10 @@
   top: 0;
 }
 
+.cachu__nav--top .cachu__nav__tooltip {
+  top: -1.5rem;
+}
+
 /*
  * Specific to Bottom Navigation.
  */
@@ -175,6 +187,11 @@
 
 .cachu__container--content-fit .cachu__nav--bottom {
   bottom: 0;
+}
+
+.cachu__nav--bottom .cachu__nav__tooltip {
+  top: auto;
+  bottom: -1.5rem;
 }
 
 /*

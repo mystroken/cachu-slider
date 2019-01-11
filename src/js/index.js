@@ -314,6 +314,7 @@ export default class Cachu {
 					return to.enter();
 				})
 				.then(() => {
+					from.slide.elements.section.style.visibility = "hidden";
 					//console.info(`Slide ${to.index} entered!`);
 					this.currentSlideItem = to;
 					this.state.isScrolling = false;
