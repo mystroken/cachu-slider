@@ -1,6 +1,10 @@
 # cachu-slider
 
-[![DUB](https://img.shields.io/dub/l/vibe-d.svg?style=for-the-badge)](http://opensource.org/licenses/MIT)
+![npm bundle size](https://img.shields.io/bundlephobia/minzip/cachu-slider)
+![npm](https://img.shields.io/npm/dw/cachu-slider)
+![npm](https://img.shields.io/npm/v/cachu-slider)
+![GitHub last commit](https://img.shields.io/github/last-commit/mystroken/cachu-slider)
+[![DUB](https://img.shields.io/dub/l/vibe-d.svg?style=flat)](http://opensource.org/licenses/MIT)
 
 A standalone vanilla javascript library to create animated fullscreen or content-fit sliders on your web pages. It is inspired by the famous library [fullpage.js](https://github.com/alvarotrigo/fullpage.js/) by Alvaro Trigo.
 
