@@ -283,6 +283,23 @@ export default class Cachu {
 		return this._scroll(from, to);
 	}
 
+	_scrollToId(slideItemId) {
+
+		var to;
+		var index;
+		for (index = 1; index <= this.slideList.length; ++index) {
+			var slideElement = this.slideList.find(index);
+			if (slideElement.slide.elements.section.id === slideItemId) {
+				to = slideElement;
+			}
+		}
+		if (to) {
+			return this._scrollTo(to);
+		}
+
+		return Promise.resolve();
+	}
+
 	_scrollTo(slideItem) {
 
 		if ( (slideItem instanceof CachuSlideListItem) && (this.currentSlideItem != slideItem)) {
